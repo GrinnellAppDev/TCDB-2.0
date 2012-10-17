@@ -24,3 +24,15 @@ And you're good!  TCDB2 should now be available to explore on port 3000.  Just b
     localhost:3000
 
 in any modern, standards compliant, web browser.
+
+## Resources
+
+We use [Trello](http://trello.com) to plan each iteration and track our progress.  You can view the current status of the project on [our TCDB2 Trello board](https://trello.com/board/tcdb-2-0-development/5063d611b2c095dd52060af1).  
+
+[Obviously], we use [git](http://git-scm.com/) to manage our code.  This project can be found on [Github](http://github.com) at:
+    
+    https://github.com/GrinnellAppDev/TCDB-2.0
+
+If you are compelled to contribute, shoot us a pull request!
+
+
