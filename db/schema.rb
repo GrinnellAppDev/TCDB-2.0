@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20121018032918) do
     t.string   "boxNum"
     t.string   "rank"
     t.string   "remember_token"
+    t.string   "username"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
