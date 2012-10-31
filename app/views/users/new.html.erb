@@ -4,7 +4,11 @@
 <div class="row">
   <div class="span6 offset3">
     <%= form_for(@user) do |f| %>
-  
+      <%= render 'shared/error_messages' %>
+
+      <%= f.label :username %>
+      <%= f.text_field :username %>
+    
       <%= f.label :name %>
       <%= f.text_field :name %>
 
@@ -16,9 +20,6 @@
 
 	    <%= f.label :rank %>
       <%= f.text_field :rank %>
-
-      <%= f.label :username %>
-      <%= f.text_field :username %>
 
       <%= f.submit "Create User", class: "btn btn-large btn-primary" %>
     <% end %>
