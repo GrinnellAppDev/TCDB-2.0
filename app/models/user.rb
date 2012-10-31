@@ -13,15 +13,20 @@ class User < ActiveRecord::Base
   attr_accessible :username, :email, :name, :phone, :boxNum, :pCard, :rank, :password, :password_confirmation
   has_secure_password
   before_save { |user| user.username = username.downcase }
+  before_save { |user| user.rank = rank.upcase }
   before_save :create_remember_token 
-  before_save :prep_email
-
-  validates :username, presence: true, length: { maximum: 10 },
-                   uniqueness: { case_sensitive: false }
+  before_validation :prep_email
+  VALID_USERNAME_REGEX = /\A[a-z]{6}([a-z]|\d){2}\z/i
+  validates :username, presence: true,
+                       length:     { maximum: 8 },
+                       format:     { with: VALID_USERNAME_REGEX },
+                       uniqueness: { case_sensitive: false }
   validates :name, presence: true, length: { maximum: 50 }
-  validates :rank, presence: true
+  VALID_RANK_REGEX = /\A[T][C][T|C]?\z/i
+  validates :rank, presence: true,  format: { with: VALID_RANK_REGEX }
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
+  validates :email, presence: true
 
   private
     def create_remember_token
