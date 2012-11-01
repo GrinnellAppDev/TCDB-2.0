@@ -1,20 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
- <title><%= full_title(yield(:title)) %></title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+<title><%= full_title(yield(:title)) %></title>
+ <%= stylesheet_link_tag    "application", :media => "all" %>
+ <%= javascript_include_tag "application" %>
+ <%= csrf_meta_tags %>
+
+
+ <%= render 'layouts/shim' %>
+
 </head>
-  <body>
-    <div class="container">
+ <body>
+  <%= render 'layouts/header' %>
 
-    <% flash.each do |key,value| %>
-		<%= content_tag(:div, value, class: "alert alert-#{key}") %>
-	<% end %>
 
-      <%= yield %>
-      <%= debug(params) if Rails.env.development? %>
-    </div>
-  </body>
+<!-- Tabbable tabs -->
+<div class="tabbable tabs-left">
+  <ul class="nav nav-tabs">
+    <li>Test 1</li>
+    <li>Test 2</li>
+  </ul>
+  <div class="tab-content">
+    <p>Something</p>
+  </div>
+</div>
+
+
+
+ <div class="container">
+   <% flash.each do |key,value| %>
+    <%= content_tag(:div, value, class: "alert alert-#{key}") %>
+   <% end %>
+
+     <%= yield %>
+     <%= debug(params) if Rails.env.development? %>
+   </div>
+
+   <%= render 'layouts/footer' %>
+
+
+ </body>
 </html>
