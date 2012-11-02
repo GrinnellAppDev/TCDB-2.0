@@ -2,6 +2,8 @@ Tcdb2::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
 
+  root to: 'sessions#new'
+
   match '/login',  to: 'sessions#new'
   match '/logout', to: 'sessions#destroy', via: :delete
 

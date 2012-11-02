@@ -35,4 +35,5 @@ class User < ActiveRecord::Base
     def prep_email
       self.email = self.username + '@grinnell.edu'
     end
+
 end

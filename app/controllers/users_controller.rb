@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+before_filter :signed_in_user
+before_filter :tcc,             only: [:new, :create]
+
   def show
     @user = User.find(params[:id])
   end
@@ -16,4 +19,14 @@ class UsersController < ApplicationController
     end
   end
 
+  private
+  def signed_in_user
+    if(!signed_in?)
+      redirect_to login_url
+  end
+
+  def tcc
+    redirect_to root_url unless tcc?
+  end
+end
 end
