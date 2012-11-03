@@ -1,9 +1,20 @@
 Tcdb2::Application.routes.draw do
+
+  root to: 'static_pages#home'
+
+
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
 
   match '/login',  to: 'sessions#new'
   match '/logout', to: 'sessions#destroy', via: :delete
+
+  match '/combo', to: 'static_pages#combo'
+  match '/subrequest', to: 'static_pages#subrequest'
+  match '/schedule', to: 'static_pages#schedule'
+  match '/directory', to: 'static_pages#directory'
+  match '/totalhrs', to: 'static_pages#totalhrs'
+  match '/timesheet', to: 'static_pages#timesheet'
 
   get "users/new"
 

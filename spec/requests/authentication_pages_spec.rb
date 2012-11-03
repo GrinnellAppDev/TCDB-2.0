@@ -31,8 +31,13 @@ describe "Authentication" do
         click_button "Log in"
       end
 
+      describe "followed by logout" do
+        before { click_link "Log out" }
+        it { should have_selector('title', text: 'Log in')}
+      end
 
-      it { should have_selector('title', text: user.name) }
+
+      it { should have_selector('title', text: "TCDB") }
  	  # it { should have_link('Log out', href: logout_path) }
     end
   end

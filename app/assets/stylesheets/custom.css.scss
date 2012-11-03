@@ -100,6 +100,7 @@ footer {
   padding-top: 5px;
   border-top: 1px solid #eaeaea;
   color: #999;
+  clear: both;
   a {
       color: #555;
       &:hover {
@@ -130,11 +131,36 @@ input, textarea, select, .uneditable-input {
   @include box_sizing;
 }
 
+#login {
+  border: 2px solid #888;
+  padding: 30px;
+  box-shadow: 10px 10px 5px #888;
+
+}
 
 //Overwrite original bootstrap to change navbar color.
 .navbar-inner {
-  background-color: #00c; /* background color will be black for all browsers */
+  background-color: #00B2EE; /* background color will be black for all browsers */
   background-image: none;
   background-repeat: no-repeat;
   filter: none;
+
+
 }
+
+.navbar .nav > li > a {
+  color:#fff;
+}
+
+#profilepic{
+  padding: 20px;
+}
+
+// .navbar .nav  li a
+// {
+//   color:#fff;
+// }
+
+// ul.dropdown-menu{
+//   color:#000;
+// }

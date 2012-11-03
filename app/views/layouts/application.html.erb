@@ -14,16 +14,9 @@
   <%= render 'layouts/header' %>
 
 
-<!-- Tabbable tabs -->
-<div class="tabbable tabs-left">
-  <ul class="nav nav-tabs">
-    <li>Test 1</li>
-    <li>Test 2</li>
-  </ul>
-  <div class="tab-content">
-    <p>Something</p>
-  </div>
-</div>
+<% if logged_in? %>
+   <%= render 'layouts/sidebar' %>
+<% end %>
 
 
 
@@ -33,10 +26,10 @@
    <% end %>
 
      <%= yield %>
-     <%= debug(params) if Rails.env.development? %>
-   </div>
 
    <%= render 'layouts/footer' %>
+     <%= debug(params) if Rails.env.development? %>
+   </div>
 
 
  </body>

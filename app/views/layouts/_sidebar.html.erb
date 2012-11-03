@@ -1,0 +1,17 @@
+
+<div class="span3">
+    <ul id="sidenav" class="nav nav-pills nav-stacked">
+
+      <li class="<%= 'active' if current_page?(root_path) %>"><%= link_to "Home", root_path %></li>
+      <li class="<%= 'active' if current_page?(subrequest_path) %>"> <%= link_to "Sub Requests", subrequest_path %></li>
+      <li class="<%= 'active' if current_page?(schedule_path) %>"><%= link_to "Schedule", schedule_path %></li>
+      <li class="<%= 'active' if current_page?(combo_path) %>"><%= link_to "Combo", combo_path %></li>
+      <li class="<%= 'active' if current_page?(directory_path) %>"><%= link_to "Directory", directory_path %></li>
+      <li class="<%= 'active' if current_page?(totalhrs_path) %>"><%= link_to "Total hours", totalhrs_path %></li>
+
+
+
+    </ul>
+</div>
+
+
