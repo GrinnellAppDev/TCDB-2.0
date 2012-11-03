@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-before_filter :signed_in_user
+before_filter :logged_in_user
 before_filter :tcc,             only: [:new, :create]
 
   def show
@@ -20,8 +20,8 @@ before_filter :tcc,             only: [:new, :create]
   end
 
   private
-  def signed_in_user
-    if(!signed_in?)
+  def logged_in_user
+    if(!logged_in?)
       redirect_to login_url
   end
 

@@ -1,9 +1,13 @@
 FactoryGirl.define do
   factory :user do
-    name     "Colin Tremblay"
+    name "George Spelvin"
     password "foobar"
     password_confirmation "foobar"
     rank "TC"
-    username "username"
+    username "spelvin1"
+  	
+  	factory :tcc do
+    	rank "TCC"
+  	end
   end
 end
