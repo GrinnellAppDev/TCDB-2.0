@@ -46,6 +46,23 @@ describe "User pages" do
 
     end
 
+  describe "create page normal tc" do
+    let(:user) { FactoryGirl.create(:user)}
+
+    before do 
+      log_in(user)
+      visit new_user_path 
+    end
+
+    describe "not sufficient privelages" do
+        it { should_not have_selector('h1',    text: 'Create') }
+        it { should_not have_selector('title', text: 'Create') }
+      end
+
+    after { log_out }
+    
+    end
+
   describe "create page logged in" do
     let(:tcc) { FactoryGirl.create(:tcc)}
 
