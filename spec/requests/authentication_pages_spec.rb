@@ -1,7 +1,5 @@
 require 'spec_helper'
 
-
-
 describe "Authentication" do
 
   subject { page }
@@ -11,7 +9,6 @@ describe "Authentication" do
 
     it { should have_selector('title', text: 'Log in') }
   end
-
 
   describe "log in" do
     before { visit login_path }
@@ -26,11 +23,10 @@ describe "Authentication" do
     describe "with valid information" do
       let(:user) { FactoryGirl.create(:user) }
       before do
-        fill_in "Email",    with: user.email
+        fill_in "Username", with: user.username
         fill_in "Password", with: user.password
         click_button "Log in"
       end
-
 
       it { should have_selector('title', text: user.name) }
  	  # it { should have_link('Log out', href: logout_path) }
