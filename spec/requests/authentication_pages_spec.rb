@@ -28,7 +28,7 @@ describe "Authentication" do
         click_button "Log in"
       end
 
-      it { should have_selector('title', text: user.name) }
+      it { should have_link(user.name, href: "#") }
 
       describe "followed by logout" do
         before { click_link "Log out" }
