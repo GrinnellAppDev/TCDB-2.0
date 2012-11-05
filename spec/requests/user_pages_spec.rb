@@ -25,7 +25,7 @@ describe "User pages" do
 
     after { log_out }
 
-    it { should have_selector('h1',    text: user.name) }
+    it { should have_selector('h2',    text: user.name) }
     it { should have_selector('title', text: user.name) }
 
   end

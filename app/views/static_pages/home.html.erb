@@ -1,0 +1,9 @@
+<% if logged_in? %>
+	<!-- Show logged in page.  -->
+	<h1>TODO</h1>
+	<h2>Show Clocking in View</h2>
+	<h2>Show Announcements View</h2>
+	<h2>Show Upcoming Shifts</h2>
+<% else %>
+	<%= render :template => 'sessions/new' %>
+<% end %>
