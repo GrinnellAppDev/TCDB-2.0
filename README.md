@@ -1,4 +1,4 @@
-# TCDB 2.0
+# TCDB 2.0 [![Build Status](https://secure.travis-ci.org/GrinnellAppDev/TCDB-2.0.png)](http://travis-ci.org/GrinnellAppDev/TCDB-2.0)
 
 ## About
 
