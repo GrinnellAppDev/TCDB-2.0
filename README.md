@@ -46,7 +46,7 @@ in any modern, standards compliant, web browser.
 
 Stable versions of TCDB2 are available on [Heroku](http://www.heroku.com/) at:
 
-    [http://tcdb2.herokuapp.com](http://tcdb2.herokuapp.com)
+ * [http://tcdb2.herokuapp.com](http://tcdb2.herokuapp.com)
 
 ### Planning
 
@@ -56,13 +56,13 @@ We use [Trello](http://trello.com) to plan each iteration and track our progress
 
 We are experimenting with the [Travis-CI](http://travis-ci.org) continuous integration server.  You can view the status of TCDB2 at anytime by visiting:
 
-    [https://travis-ci.org/#!/GrinnellAppDev/TCDB-2.0](https://travis-ci.org/#!/GrinnellAppDev/TCDB-2.0)
+ * [https://travis-ci.org/#!/GrinnellAppDev/TCDB-2.0](https://travis-ci.org/#!/GrinnellAppDev/TCDB-2.0)
 
 ### Version Control
 
 [Obviously], we use [git](http://git-scm.com/) to manage our code.  This project can be found on [Github](http://github.com) at:
     
-    [https://github.com/GrinnellAppDev/TCDB-2.0](https://github.com/GrinnellAppDev/TCDB-2.0)
+ * [https://github.com/GrinnellAppDev/TCDB-2.0](https://github.com/GrinnellAppDev/TCDB-2.0)
 
 If you are compelled to contribute, shoot us a pull request!
 
