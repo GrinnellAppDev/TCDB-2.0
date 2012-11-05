@@ -30,8 +30,6 @@ describe "User pages" do
 
   end
 
-  
-
   describe "create page logged out" do
     let(:tcc) { FactoryGirl.create(:tcc)}
 
