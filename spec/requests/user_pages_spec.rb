@@ -6,6 +6,16 @@ describe "User pages" do
 
   describe "edit" do
     let(:tcc) { FactoryGirl.create(:tcc) }
+
+    before { visit edit_user_path(tcc.id) }
+
+    describe "page logged out" do
+      it "should not render edit page" do
+        should have_selector('title', text: "Log in")
+        should have_selector('h1',    text: "Log in") 
+      end
+    end
+
     before do
           log_in tcc 
           visit edit_user_path(tcc.id)
