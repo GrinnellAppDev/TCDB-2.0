@@ -8,20 +8,24 @@ describe "User pages" do
     let(:tcc) { FactoryGirl.create(:tcc) }
     before do
           log_in tcc 
-          visit edit_user_path(tcc)
+          visit edit_user_path(tcc.id)
       end
 
     describe "page" do
-      it { should have_selector('h1',    text: "Update") }
-      it { should have_selector('h2',    text: tcc.username) }
-      it { should have_selector('title', text: "Edit user") }
+      it "should render edit page" do
+        should have_selector('title', text: "Edit User")
+        should have_selector('h1',    text: "Update") 
+        should have_selector('h2',    text: tcc.name) 
+      end
     end
 
     describe "with invalid information" do
-      before { click_button "Save changes" }
+      before { click_button "Save Changes" }
 
       it { should have_content('error') }
     end
+
+    after { log_out }
   end
 
   describe "profile page" do
