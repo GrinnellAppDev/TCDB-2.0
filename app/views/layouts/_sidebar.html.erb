@@ -9,7 +9,10 @@
       <li class="<%= 'active' if current_page?(directory_path) %>"><%= link_to "Directory", directory_path %></li>
       <li class="<%= 'active' if current_page?(totalhrs_path) %>"><%= link_to "Total hours", totalhrs_path %></li>
 
-
+	<br>
+		<% if current_user.rank == "TCC" %>
+			<li class="<%= 'active' if current_page?(newuser_path) %>"><%= link_to "Create User", newuser_path %></li>
+		<% end %>
 
     </ul>
 </div>
