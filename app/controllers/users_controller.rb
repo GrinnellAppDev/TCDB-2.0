@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 before_filter :logged_in_user
-before_filter :tcc,             only: [:new, :create]
+before_filter :tcc,             only: [:new, :create, :edit]
 
   def show
     @user = User.find(params[:id])
@@ -16,6 +16,20 @@ before_filter :tcc,             only: [:new, :create]
       redirect_to @user
     else
       render 'new'
+    end
+  end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+  
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(params[:user])
+      flash[:success] = "Profile updated"
+      redirect_to @user
+    else
+      render 'edit'
     end
   end
 

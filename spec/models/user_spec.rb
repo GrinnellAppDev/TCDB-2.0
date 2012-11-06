@@ -16,6 +16,8 @@ describe User do
   before do
     @user = User.new(username:"username", name: "Example User", rank:"TC",
                      password: "foobar", password_confirmation: "foobar")
+    @tcc = User.new(username:"tccname1", name: "Example TCC", rank:"TCC",
+                     password: "foobar", password_confirmation: "foobar")
   end
 
   subject { @user }

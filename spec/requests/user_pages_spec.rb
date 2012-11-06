@@ -4,6 +4,26 @@ describe "User pages" do
 
   subject { page }
 
+  describe "edit" do
+    let(:tcc) { FactoryGirl.create(:tcc) }
+    before do
+          log_in tcc 
+          visit edit_user_path(tcc)
+      end
+
+    describe "page" do
+      it { should have_selector('h1',    text: "Update") }
+      it { should have_selector('h1',    text: tcc.username) }
+      it { should have_selector('title', text: "Edit user") }
+    end
+
+    describe "with invalid information" do
+      before { click_button "Save changes" }
+
+      it { should have_content('error') }
+    end
+  end
+
   describe "profile page" do
     let(:user) { FactoryGirl.create(:user) }
 
@@ -87,7 +107,7 @@ describe "User pages" do
         fill_in "Name",         with: "Example User"
         fill_in "Password",     with: "foobar"
         fill_in "Confirmation", with: "foobar"
-        fill_in "Rank",			    with: "TC"
+        fill_in "Rank",         with: "TC"
         fill_in "Username",     with: "username"
       end
 
