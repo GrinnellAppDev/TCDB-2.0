@@ -13,7 +13,7 @@ describe "User pages" do
 
     describe "page" do
       it { should have_selector('h1',    text: "Update") }
-      it { should have_selector('h1',    text: tcc.username) }
+      it { should have_selector('h2',    text: tcc.username) }
       it { should have_selector('title', text: "Edit user") }
     end
 
