@@ -4,6 +4,41 @@ describe "User pages" do
 
   subject { page }
 
+  describe "edit" do
+    let(:tcc) { FactoryGirl.create(:tcc) }
+
+    before { visit edit_user_path(tcc.id) }
+
+    describe "page logged out" do
+      it "should not render edit page" do
+        pending "test for login page"
+        #should have_selector('title', text: "Log in")
+        #should have_selector('h1',    text: "Log in") 
+      end
+    end
+
+    before do
+          log_in tcc 
+          visit edit_user_path(tcc.id)
+      end
+
+    describe "page" do
+      it "should render edit page" do
+        should have_selector('title', text: "Edit User")
+        should have_selector('h1',    text: "Update") 
+        should have_selector('h2',    text: tcc.name) 
+      end
+    end
+
+    describe "with invalid information" do
+      before { click_button "Save Changes" }
+
+      it { should have_content('error') }
+    end
+
+    after { log_out }
+  end
+
   describe "profile page" do
     let(:user) { FactoryGirl.create(:user) }
 
@@ -29,8 +64,6 @@ describe "User pages" do
     it { should have_selector('title', text: user.name) }
 
   end
-
-  
 
   describe "create page logged out" do
     let(:tcc) { FactoryGirl.create(:tcc)}
@@ -89,7 +122,7 @@ describe "User pages" do
         fill_in "Name",         with: "Example User"
         fill_in "Password",     with: "foobar"
         fill_in "Confirmation", with: "foobar"
-        fill_in "Rank",			    with: "TC"
+        fill_in "Rank",         with: "TC"
         fill_in "Username",     with: "username"
       end
 

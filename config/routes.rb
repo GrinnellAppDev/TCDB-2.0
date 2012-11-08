@@ -18,6 +18,7 @@ Tcdb2::Application.routes.draw do
   match '/totalhrs', to: 'static_pages#totalhrs'
   match '/timesheet', to: 'static_pages#timesheet'
 
+  match '/newuser' , to: 'users#new'
   get "users/new"
 
   # The priority is based upon order of creation:

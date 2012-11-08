@@ -1,0 +1,28 @@
+<% provide(:title, 'Edit User') %>
+<h1>Update</h1>
+<h2> <%= @user.name %> </h2>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@user) do |f| %>
+      <%= render 'shared/error_messages' %>
+
+      <%= f.label :username %>
+      <%= f.text_field :username %>
+    
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation %>
+
+	  <%= f.label :rank %>
+      <%= f.text_field :rank %>
+
+      <%= f.submit "Save Changes", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
