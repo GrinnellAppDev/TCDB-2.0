@@ -5,9 +5,9 @@ FactoryGirl.define do
     password_confirmation "foobar"
     rank "TC"
     username "spelvin1"
-  	
-  	factory :tcc do
-    	rank "TCC"
-  	end
+
+    factory :tcc do
+      rank "TCC"
+    end
   end
 end
