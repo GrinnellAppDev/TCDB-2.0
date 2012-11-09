@@ -5,60 +5,82 @@ describe "User pages" do
   subject { page }
 
   describe "edit" do
-    let(:tcc) { FactoryGirl.create(:tcc) }
 
-    before { visit edit_user_path(tcc.id) }
 
-    describe "page logged out" do
-      it "should not render edit page" do
-        pending "test for login page"
-        #should have_selector('title', text: "Log in")
-        #should have_selector('h1',    text: "Log in") 
+describe "not logged in, accessing edit page" do
+        let(:user) { FactoryGirl.create(:user) }
+
+    before { visit edit_user_path(user.id) }
+
+      describe "should not render edit page" do
+        it { should_not have_selector('title', text: "Edit User") }
+        it { should_not have_selector('h1',    text: "Update") }
+        it { should_not have_selector('h2',    text: user.name) }
+        it { should have_selector('title', text: "Log in") }
+        it { should have_selector('h1',    text: "Log in") }
       end
     end
+
+    describe "TC accesses their edit page" do
+      #SHOULD PASS WHEN USERS ARE GIVEN PERMISSION TO ACCESS THEIR OWN EDIT PAGE
+      let(:user) { FactoryGirl.create(:user) }
+      before do
+        log_in user
+        visit edit_user_path(user.id)
+      end
+      describe "not sufficient privelages" do
+        it { should_not have_selector('title', text: "Edit User") }
+        it { should_not have_selector('h1',    text: "Update") }
+        it { should_not have_selector('h2',    text: user.name) }
+      end
+      after {log_out}
+    end
+
+describe "View edit page as TCC" do
+      let(:tcc) { FactoryGirl.create(:tcc) }
 
     before do
           log_in tcc 
           visit edit_user_path(tcc.id)
       end
 
-      it "should render edit page" do
-        should have_selector('title', text: "Edit User")
-        should have_selector('h1',    text: "Update") 
-        should have_selector('h2',    text: tcc.name) 
+      describe "should render edit page" do
+        it { should have_selector('title', text: "Edit User") }
+        it { should have_selector('h1',    text: "Update") }
+        it { should have_selector('h2',    text: tcc.name) }
       end
-
     after { log_out }
   end
+
+end
 
   describe "profile page" do
     let(:user) { FactoryGirl.create(:user) }
 
+describe "View profile page before login" do
     before do 
       visit user_path(user) 
     end
+    describe "not sufficient privelages" do
 
     it { should_not have_selector('h1',    text: user.name) }
     it { should_not have_selector('title', text: user.name) }
   end
+  end
 
-  describe "profile page" do
-    let(:user) { FactoryGirl.create(:user) }
-
+describe "View profile page after login" do
     before do 
       log_in(user)
       visit user_path(user) 
     end
-
-    after { log_out }
-
+    describe "sufficient privelages" do
     it { should have_selector('h2',    text: user.name) }
     it { should have_selector('title', text: user.name) }
-
-  end
-
+end
+    after { log_out }
+end
+end
   describe "create page logged out" do
-    let(:tcc) { FactoryGirl.create(:tcc)}
 
     before do 
       visit new_user_path 
