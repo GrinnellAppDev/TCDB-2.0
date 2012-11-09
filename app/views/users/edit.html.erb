@@ -23,7 +23,7 @@
       <%= f.text_field :pCard %>
 
       <%= f.label :rank %>
-      <%= f.text_field :rank %>
+      <%= f.select :rank, [['TC'],['TCT'],['TCC']] %>
 
       <%= f.submit "Save Changes", class: "btn btn-large btn-primary" %>
     <% end %>
