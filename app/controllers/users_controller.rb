@@ -26,9 +26,10 @@ before_filter :tcc,             only: [:new, :create, :edit]
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
-      flash[:success] = "Profile updated"
-      redirect_to @user
+      flash.now[:success] = "Profile updated"
+      render 'edit'
     else
+      flash.now[:failure] = "Profile not updated"
       render 'edit'
     end
   end

@@ -24,8 +24,10 @@ class User < ActiveRecord::Base
   validates :name, presence: true, length: { maximum: 50 }
   VALID_RANK_REGEX = /\A[T][C][T|C]?\z/i
   validates :rank, presence: true,  format: { with: VALID_RANK_REGEX }
-  validates :password, presence: true, length: { minimum: 6 }
-  validates :password_confirmation, presence: true
+  validates :password, presence: true,
+              length: { :within => 6..20 }, :on => :create
+  validates :password_confirmation,
+                presence: true, :on => :create
   validates :email, presence: true
 
   private

@@ -22,13 +22,11 @@ describe "User pages" do
           visit edit_user_path(tcc.id)
       end
 
-    describe "page" do
       it "should render edit page" do
         should have_selector('title', text: "Edit User")
         should have_selector('h1',    text: "Update") 
         should have_selector('h2',    text: tcc.name) 
       end
-    end
 
     describe "with invalid information" do
       before { click_button "Save Changes" }
