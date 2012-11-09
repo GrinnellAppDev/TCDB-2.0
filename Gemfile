@@ -16,7 +16,7 @@ group :development, :test do
   gem 'spork', '0.9.2'
   gem 'guard-spork', '0.3.2'  
   gem 'annotate', '2.5.0'
-  gem 'rb-inotify', '~> 0.8.8'
+  gem 'rb-inotify', '~> 0.8.8', :require => false
 end
 
 group :test do

@@ -18,6 +18,8 @@ describe User do
                      password: "foobar", password_confirmation: "foobar")
     @tcc = User.new(username:"tccname1", name: "Example TCC", rank:"TCC",
                      password: "foobar", password_confirmation: "foobar")
+    @shift = Shift.new(labid: "1", filled:"false", starttime: Time.now, 
+                      endtime: Time.now + 60, userid: @user.id)
   end
 
   subject { @user }
@@ -93,4 +95,14 @@ describe "when username is not present" do
     before { @user.save }
     its(:remember_token) { should_not be_blank }
   end
+
+  describe "get user shifts" do
+    before do
+      @shift.save
+      @user.save 
+    end
+    let(:test) {@user.get_user_shifts.include?(@shift)}
+     specify{ test.should be_true}
+  end
+
 end
