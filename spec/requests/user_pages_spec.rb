@@ -28,12 +28,6 @@ describe "User pages" do
         should have_selector('h2',    text: tcc.name) 
       end
 
-    describe "with invalid information" do
-      before { click_button "Save Changes" }
-
-      it { should have_content('error') }
-    end
-
     after { log_out }
   end
 
