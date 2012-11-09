@@ -34,6 +34,7 @@ before_filter :tcc,             only: [:new, :create, :edit]
     end
   end
 
+
   private
   def logged_in_user
     if(!logged_in?)
