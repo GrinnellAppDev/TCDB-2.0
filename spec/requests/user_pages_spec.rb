@@ -22,7 +22,7 @@ describe "not logged in, accessing edit page" do
     end
 
     describe "TC accesses their edit page" do
-      #SHOULD PASS WHEN USERS ARE GIVEN PERMISSION TO ACCESS THEIR OWN EDIT PAGE
+      #SHOULD SWITCH TO should WHEN USERS ARE GIVEN PERMISSION TO ACCESS THEIR OWN EDIT PAGE
       let(:user) { FactoryGirl.create(:user) }
       before do
         log_in user

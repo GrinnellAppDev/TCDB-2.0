@@ -16,10 +16,8 @@ class User < ActiveRecord::Base
   before_save { |user| user.rank = rank.upcase }
   before_save :create_remember_token 
   before_validation :prep_email
-  VALID_USERNAME_REGEX = /\A[a-z]{6}([a-z]|\d){2}\z/i
   validates :username, presence: true,
-                       length:     { maximum: 8 },
-                       format:     { with: VALID_USERNAME_REGEX },
+                       length:     { :within => 4..10 },
                        uniqueness: { case_sensitive: false }
   validates :name, presence: true, length: { maximum: 50 }
   VALID_RANK_REGEX = /\A[T][C][T|C]?\z/i
