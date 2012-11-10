@@ -44,8 +44,8 @@ ActiveRecord::Schema.define(:version => 20121030205037) do
     t.string   "pCard"
     t.string   "boxNum"
     t.string   "rank"
-    t.string   "username"
     t.string   "remember_token"
+    t.string   "username"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
