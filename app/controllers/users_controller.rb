@@ -24,16 +24,24 @@ before_filter :tcc,             only: [:new, :create, :edit]
   end
   
   def update
-    @user = User.find(params[:id])
-    if @user.update_attributes(params[:user])
-      flash.now[:success] = "Profile updated"
-      render 'edit'
-    else
-      flash.now[:failure] = "Profile not updated"
-      render 'edit'
-    end
-  end
 
+    @user = User.find(params[:id])
+    current_user_test = current_user?(@user)
+
+    if @user.update_attributes(params[:user])
+        flash.now[:success] = "Profile updated"
+        # Remember_token gets reset when the user is saved we have to relog
+        # in the the user updates his/her own account details.
+        # http://ruby.railstutorial.org/chapters/updating-showing-and-deleting-users#sec-updating_users
+        if current_user_test
+          log_in @user
+        end
+        render 'edit'
+      else
+        flash.now[:failure] = "Profile not updated"
+        render 'edit'
+      end
+  end
 
   private
   def logged_in_user

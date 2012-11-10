@@ -1,9 +1,20 @@
 <% provide(:title, @user.name) %>
 
-<h2> <%= @user.name %>
-</h2>
-<%= image_tag("dilan.jpg", id:"profilepic", class:"pull-left") %>
+<h2> <%= @user.name %></h2>
+
+<!-- Temporary Link to edit button -->
+<%= link_to "Edit your profile", edit_user_path(current_user) %>
+
+
+
+<% if (Rails.application.assets.find_asset( @user.username + ".jpg") ) %>
+	<%= image_tag("ustekdil.jpg", id:"profilepic", class:"pull-left") %>
+<% else %>
+	<%= image_tag("default_profile_image.png", id:"profilepic", class:"pull-left") %>
+<% end %>
+
 <br>
+
 <div class="span6">
 <table class="table">
 	  <col style="font-size:250%;">
@@ -32,7 +43,6 @@
 <td> Rank: </td>
 <td>  <%=@user.rank %></td>
 	</tr>
-
 
 </table>
 </div>
