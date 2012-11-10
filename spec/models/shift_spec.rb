@@ -22,7 +22,7 @@ describe Shift do
   
   # Insure  test fails if certain values are nil that should not be
   describe "when start time is not present" do
-    before {@s.starttime = nil}
+    before { @s.starttime = nil }
     it {should_not be_valid}
   end
 

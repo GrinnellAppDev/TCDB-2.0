@@ -9,6 +9,6 @@ def log_in(user)
 end
 
 def log_out 
-	current_user = nil
+	current_user = nil 
     cookies.delete(:remember_token)
 end

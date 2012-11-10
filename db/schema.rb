@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121030205037) do
+ActiveRecord::Schema.define(:version => 20121110205404) do
 
   create_table "shifts", :force => true do |t|
     t.boolean  "filled"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(:version => 20121030205037) do
     t.integer  "shiftid"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.float    "payrate"
   end
 
   create_table "users", :force => true do |t|
