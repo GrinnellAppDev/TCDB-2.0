@@ -1,17 +1,17 @@
 <% provide(:title, @user.name) %>
-
 <h2> <%= @user.name %></h2>
 
-<!-- Temporary Link to edit button -->
-<%= link_to "Edit your profile", edit_user_path(current_user) %>
-
-
+<div class="span3">
 
 <% if (Rails.application.assets.find_asset( @user.username + ".jpg") ) %>
 	<%= image_tag("ustekdil.jpg", id:"profilepic", class:"pull-left") %>
 <% else %>
 	<%= image_tag("default_profile_image.png", id:"profilepic", class:"pull-left") %>
 <% end %>
+
+<center><a class="btn" href="<%= edit_user_path(current_user) %>">Edit Profile</a></center>
+<br>
+</div>
 
 <br>
 
