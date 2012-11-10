@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe TimeWorked do
   pending "add some examples to (or delete) #{__FILE__}"
+  pending "implement payrate tests"
 
    # create temporary Shift instace @s
   before { @clocked_shift = TimeWorked.new( starttime: Time.now, endtime: Time.now + 60, labid: 5, userid: 1 ) }
@@ -13,8 +14,11 @@ describe TimeWorked do
   it {should respond_to(:starttime)}
   it {should respond_to(:endtime)}
   it {should respond_to(:labid)}
-  it {should respond_to(:userid)}
+  it {should respond_to(:userid) }
  
+ 
+  	
+  
 
   # Ensure time_worked is valid after initial creation
   describe "when shift has just been clocked" do
