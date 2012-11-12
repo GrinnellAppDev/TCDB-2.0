@@ -98,8 +98,9 @@ describe "when username is not present" do
 
   describe "get user shifts" do
     before do
-      @shift.save
-      @user.save 
+      @user.save
+      @shift[:userid] = @user.id
+      @shift.save 
     end
     let(:test) {@user.get_user_shifts.include?(@shift)}
      specify{ test.should be_true}
