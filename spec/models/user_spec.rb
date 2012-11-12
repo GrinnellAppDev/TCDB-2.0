@@ -20,6 +20,11 @@ describe User do
                      password: "foobar", password_confirmation: "foobar")
     @shift = Shift.new(labid: "1", filled:"false", starttime: Time.now, 
                       endtime: Time.now + 60, userid: @user.id)
+    @shift_future = Shift.new(labid: "1", filled:"false", starttime: Time.now + (60 * 60 * 24), 
+                      endtime: Time.now + 60 + (60 * 60 * 24), userid: @user.id)
+    @shift_past = Shift.new(labid: "1", filled:"false", starttime: Time.now - (60 * 17), 
+                      endtime: Time.now - 60 , userid: @user.id)
+
   end
 
   subject { @user }
