@@ -36,6 +36,10 @@ class User < ActiveRecord::Base
       get_user_shifts.keep_if {|x| x.starttime > Time.now - (60 * 15)}
     end
 
+    def get_next_week_user_shifts
+      get_future_user_shifts.keep_if{|x| x.starttime < Time.now + (60 * 60 *  24 * 7)}
+    end
+
 
   private
     def create_remember_token
