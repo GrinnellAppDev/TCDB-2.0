@@ -32,6 +32,10 @@ class User < ActiveRecord::Base
       Shift.find(:all, :conditions => {:userid => self.id})
     end
 
+    def get_future_user_shifts
+      get_user_shifts.keep_if {|x| x.starttime > Time.now - (60 * 15)}
+    end
+
 
   private
     def create_remember_token

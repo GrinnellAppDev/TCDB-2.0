@@ -111,4 +111,21 @@ describe "when username is not present" do
      specify{ test.should be_true}
   end
 
+  describe "get future user shifts" do
+    before do
+      @user.save
+      @shift[:userid] = @user.id
+      @shift.save 
+      @shift_past[:userid] = @user.id
+      @shift_past.save
+      @shift_future[:userid] = @user.id
+      @shift_future.save
+    end
+        let(:test) {@user.get_future_user_shifts.include?(@shift)}
+     specify{ test.should be_true}
+         let(:test1) {@user.get_future_user_shifts.include?(@shift_future)}
+     specify{ test1.should be_true}
+         let(:test2) {@user.get_future_user_shifts.include?(@shift_past)}
+     specify{ test2.should be_false}
+      end
 end
