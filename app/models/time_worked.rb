@@ -1,3 +1,5 @@
+require 'lab.rb'
+
 class TimeWorked < ActiveRecord::Base
   attr_accessible :comment, :endtime, :labid, :shiftid, :starttime, :userid, :payrate
 
@@ -6,12 +8,13 @@ class TimeWorked < ActiveRecord::Base
 
     def init
       self.payrate ||= 8.50		#will set the default value only if it's nil
-      self.labid   ||= Lab.names[:helpdesk]	# 'project' for now..
+      self.labid   ||= 1
+      #Lab.names(:helpdesk)	# 'project' for now..
     end
 
   # validation
-  validates(:starttime, :presence => true)
-  validates(:labid, :presence => true)
+  validates(:starttime, presence: true)
+  validates(:labid, presence: true)
   validates(:userid, presence: true)
   validates(:payrate, presence: true)
 

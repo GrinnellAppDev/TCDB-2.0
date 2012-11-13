@@ -23,6 +23,10 @@ module TimeWorkedHelper
 		@time_worked = nil
 	end
 
+	def clocked_in?
+
+	end
+	
 	def add_comment(comment)
 
 	end

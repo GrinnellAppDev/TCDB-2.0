@@ -2,6 +2,11 @@ class UsersController < ApplicationController
 before_filter :logged_in_user
 before_filter :tcc,             only: [:new, :create, :edit]
 
+  def home
+    @current_shift = TimeWorked.find_by_userid(current_user.id)
+    @current_shift ||= TimeWorked.new(userid: current_user.id, starttime: Time.now)
+  end
+
   def show
     @user = User.find(params[:id])
   end
