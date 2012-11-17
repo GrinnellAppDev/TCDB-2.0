@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 before_filter :logged_in_user
-before_filter :tcc,             only: [:new, :create, :edit]
+before_filter :tcc, :only => [:new, :create, :edit]
 
   def show
     @user = User.find(params[:id])
@@ -33,7 +33,7 @@ before_filter :tcc,             only: [:new, :create, :edit]
     end
   end
 
-  private
+  privates
   def logged_in_user
     if(!logged_in?)
       redirect_to login_url

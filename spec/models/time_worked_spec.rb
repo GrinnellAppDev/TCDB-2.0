@@ -1,11 +1,8 @@
 require 'spec_helper'
 
 describe TimeWorked do
-  pending "add some examples to (or delete) #{__FILE__}"
-  pending "implement payrate tests"
-
    # create temporary Shift instace @s
-  before { @clocked_shift = TimeWorked.new( starttime: Time.now, endtime: Time.now + 60, labid: 5, userid: 1 ) }
+  before { @clocked_shift = TimeWorked.new( starttime: Time.now, endtime: Time.now + 60, labid: Lab.names(:helpdesk), userid: 1 ) }
   
   # set subject to @s for 'it' reference
   subject{ @clocked_shift }
@@ -15,9 +12,7 @@ describe TimeWorked do
   it {should respond_to(:endtime)}
   it {should respond_to(:labid)}
   it {should respond_to(:userid) }
- 
- 
-  	
+  it {should respond_to(:payrate)}
   
 
   # Ensure time_worked is valid after initial creation
@@ -44,6 +39,21 @@ describe TimeWorked do
   describe "when userid is not set" do
     before { subject.userid = nil }
     it { should_not be_valid }
+  end
+
+  describe "payrate should have a default" do
+  	it { subject.payrate.should == 8.50 }
+  	it { should be_valid }
+  end
+
+  describe "when payrate is not present" do
+    before { subject.payrate = nil }
+    it { should_not be_valid }
+  end
+
+  describe "when payrate is present" do
+    before { subject.payrate = 9.10 }
+    it { should be_valid }
   end
 
   describe "when comment is not present" do
