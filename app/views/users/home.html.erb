@@ -1,9 +1,34 @@
 <% if logged_in? %>
-	<!-- Show logged in page.  -->
-	<h1>TODO</h1>
-	<h2>Show Clocking in View</h2>
-	<h2>Show Announcements View</h2>
-	<h2>Show Upcoming Shifts</h2>
+<!-- Show logged in page.  -->
+<h1>TODO</h1>
+<div class="span5 widget">
+<h2> <% if clocked_in? %> Clock Out <% else %> Clock In <% end %> </h2>
+<%= form_for @time_worked do |f| %>
+  <%= render 'shared/error_messages' %>
+
+  <%= f.label :Lab %>
+  <%= f.text_field Lab.names(:labid) %>
+
+  <%= f.label :Date %>
+  <%= f.label time.strftime("%Y-%m-%d") %>
+
+  <%= f.label :Mentoring %>
+  <%= f.check_box_tag :mentoring %>
+
+  <%= f.label :"Start Time" %>
+  <%= f.label :starttime %>
+
+  <%= f.label :"End Time" %>
+  <%= f.label :endtime %>
+
+  <%= f.label :Comment %>
+  <%= f.text_field :comment %>
+
+  <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+<% end %>
+</div>
+<h2>Show Announcements View</h2>
+<h2>Show Upcoming Shifts</h2>
 <% else %>
-	<%= render :template => 'sessions/new' %>
+<%= render :template => 'sessions/new' %>
 <% end %>

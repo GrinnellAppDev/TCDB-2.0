@@ -2,6 +2,11 @@ class UsersController < ApplicationController
 before_filter :logged_in_user
 before_filter :tcc, :only => [:new, :create, :edit]
 
+  def home
+    @time_worked = TimeWorked.new( :userid => current_user.id )
+    #end 
+  end
+
   def show
     @user = User.find(params[:id])
   end

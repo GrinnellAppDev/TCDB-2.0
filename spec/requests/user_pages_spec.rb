@@ -19,7 +19,7 @@ describe "User pages" do
     end
 
     before do
-          log_in tcc 
+          log_in(tcc) 
           visit edit_user_path(tcc.id)
       end
 

@@ -2,7 +2,6 @@ Tcdb2::Application.routes.draw do
 
   root to: 'users#home'
 
-
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
 
