@@ -1,25 +1,31 @@
 Tcdb2::Application.routes.draw do
 
+  get "time_workeds/clock"
+
   root to: 'users#home'
 
-  resources :users
-  resources :sessions, only: [:new, :create, :destroy]
-  resources :time_workeds
 
-  root to: 'sessions#new'
+  
+
+  match '/newuser' , to: 'users#new'
+  get "users/new"
+  resources :users
 
   match '/login',  to: 'sessions#new'
   match '/logout', to: 'sessions#destroy', via: :delete
+  resources :sessions, only: [:new, :create, :destroy]
 
+  match '/time_workeds/clock', to: 'time_workeds#clock'
+  match '/clock', to: 'time_workeds#clock'
+  resources :time_workeds
+
+  
   match '/combo', to: 'static_pages#combo'
   match '/subrequest', to: 'static_pages#subrequest'
   match '/schedule', to: 'static_pages#schedule'
   match '/directory', to: 'static_pages#directory'
   match '/totalhrs', to: 'static_pages#totalhrs'
   match '/timesheet', to: 'static_pages#timesheet'
-
-  match '/newuser' , to: 'users#new'
-  get "users/new"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -5,7 +5,7 @@
 <div class="row">
   <div class="span6 offset3">
     <%= form_for(@user) do |f| %>
-      <%= render 'shared/error_messages' %>
+      <%= render 'shared/error_messages', the_model: @user %>
 
       <%= f.label :username %>
       <%= f.text_field :username %>
@@ -19,7 +19,7 @@
       <%= f.label :password_confirmation, "Confirmation" %>
       <%= f.password_field :password_confirmation %>
 
-	  <%= f.label :rank %>
+	    <%= f.label :rank %>
       <%= f.text_field :rank %>
 
       <%= f.submit "Save Changes", class: "btn btn-large btn-primary" %>

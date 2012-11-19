@@ -1,0 +1,33 @@
+<% if logged_in? %>
+<!-- Show logged in page.  -->
+<h1>Time Clock</h1>
+<div class="span5 widget">
+<h2> <% if clocked_in? %> Clock Out <% else %> Clock In <% end %> </h2>
+
+<%= render 'shared/error_messages', the_model: @time_worked %>
+
+<%= form_for @time_worked do |f| %>
+
+  <%= f.label :Lab %>
+  <%= f.text_field :labid %>
+
+  <%= f.label :Date %>
+  <%= f.label "a date" %>
+
+  <%= f.label :"Start Time" %>
+  <%= f.text_field :starttime %>
+
+  <%= f.label :"End Time" %>
+  <%= f.text_field :endtime %>
+
+  <%= f.label :Comment %>
+  <%= f.text_field :comment %>
+
+  <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+<% end %>
+</div>
+<h2>Show Announcements View</h2>
+<h2>Show Upcoming Shifts</h2>
+<% else %>
+<%= render :template => 'sessions/new' %>
+<% end %>
