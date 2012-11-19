@@ -4,16 +4,12 @@
 <div class="span5 widget">
 <h2> <% if clocked_in? %> Clock Out <% else %> Clock In <% end %> </h2>
 <%= form_for @time_worked do |f| %>
-  <%= render 'shared/error_messages' %>
 
   <%= f.label :Lab %>
-  <%= f.text_field Lab.names(:labid) %>
+  <%= f.text_field :labid %>
 
   <%= f.label :Date %>
-  <%= f.label time.strftime("%Y-%m-%d") %>
-
-  <%= f.label :Mentoring %>
-  <%= f.check_box_tag :mentoring %>
+  <%= f.label "a date" %>
 
   <%= f.label :"Start Time" %>
   <%= f.label :starttime %>

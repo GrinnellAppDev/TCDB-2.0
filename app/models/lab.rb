@@ -1,6 +1,7 @@
 module Lab
 
 	@@labnames = { 
+		nolab: 0,
 		helpdesk: 1, 
 		av: 2, 
 		ccl: 3, 

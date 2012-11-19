@@ -6,7 +6,7 @@ class TimeWorked < ActiveRecord::Base
 
     def init
       self.payrate ||= 8.50		#will set the default value only if it's nil
-      self.labid   ||= Lab.names[:helpdesk]	# 'project' for now..
+      self.labid   ||= Lab.names(:helpdesk)	# 'project' for now..
     end
 
   # validation

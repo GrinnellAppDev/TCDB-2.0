@@ -10,7 +10,7 @@ require 'spec_helper'
 #     end
 #   end
 # end
-describe TimeWorkedHelper do
+describe TimeWorkedsHelper do
 
   describe "clock_in user" do
   	

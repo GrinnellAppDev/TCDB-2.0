@@ -1,4 +1,4 @@
-module TimeWorkedHelper
+module TimeWorkedsHelper
 
   def clock_in(time_worked, lab, mentoring)
  	
