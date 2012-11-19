@@ -33,7 +33,7 @@ before_filter :tcc, :only => [:new, :create, :edit]
     end
   end
 
-  privates
+  private
   def logged_in_user
     if(!logged_in?)
       redirect_to login_url
