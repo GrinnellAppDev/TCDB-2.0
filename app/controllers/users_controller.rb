@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 before_filter :logged_in_user
 before_filter :tcc,             only: [:new, :create, :edit]
 
+
   def show
     @user = User.find(params[:id])
   end
@@ -50,7 +51,9 @@ before_filter :tcc,             only: [:new, :create, :edit]
   end
 
   def tcc
-    redirect_to root_url unless tcc?
+    redirect_to root_url unless tcc? 
   end
+
+
 end
 end

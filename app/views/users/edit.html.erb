@@ -3,7 +3,7 @@
 <h2> <%= @user.name %> </h2>
 
 <div class="row">
-  <div class="span6 offset3">
+  <div class="span6 offset2">
     <%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages' %>
 
@@ -27,11 +27,13 @@
 
       <%= f.submit "Save Changes", class: "btn btn-large btn-primary" %>
     <% end %>
-  </div>
-</div>
+<!--   </div>
+</div> -->
 <hr>
-<div class="row">
+<!-- <div class="row">
   <div class="span6 offset3">
+  -->   <h3>Change Password</h3>
+    <br>
     <%= form_for(@user) do |g| %>
       <%= render 'shared/error_messages' %>
       <%= g.label :password %>

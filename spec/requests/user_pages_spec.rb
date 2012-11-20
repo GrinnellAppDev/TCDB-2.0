@@ -6,20 +6,6 @@ describe "User pages" do
 
   describe "edit" do
 
-    describe "not logged in, accessing edit page" do
-      let(:user) { FactoryGirl.create(:user) }
-
-      before { visit edit_user_path(user.id) }
-
-      describe "should not render edit page" do
-        it { should_not have_selector('title', text: "Edit User") }
-        it { should_not have_selector('h1',    text: "Update") }
-        it { should_not have_selector('h2',    text: user.name) }
-        it { should have_selector('title', text: "Log in") }
-        it { should have_selector('h1',    text: "Log in") }
-      end
-    end
-
     describe "TC accesses their edit page" do
       #SHOULD SWITCH TO should WHEN USERS ARE GIVEN PERMISSION TO ACCESS THEIR OWN EDIT PAGE
       let(:user) { FactoryGirl.create(:user) }
@@ -27,7 +13,8 @@ describe "User pages" do
         log_in user
         visit edit_user_path(user.id)
       end
-      describe "not sufficient privelages" do
+
+      describe "not sufficient privileges" do
         it { should_not have_selector('title', text: "Edit User") }
         it { should_not have_selector('h1',    text: "Update") }
         it { should_not have_selector('h2',    text: user.name) }
@@ -68,7 +55,8 @@ describe "User pages" do
         describe "should edit user" do
           before { click_button "Save Changes" }
           it { should have_content('Profile updated') }
-          pending "test that the actual values are updated"
+          specify  { tcc.reload.name.should == new_name }
+          specify  { tcc.reload.username.should == new_username }
         end
       end
 
@@ -83,10 +71,46 @@ describe "User pages" do
         before { fill_in "Confirm Password", with: "foobar2" }
         before { click_button "Save Password" }
         it { should have_content('Profile updated') }
-        pending "test that the actual value is updated"
       end
 
       after { log_out }
+    end
+  end
+
+  describe "authorization" do
+
+    describe "for non-signed-in users" do
+      let(:user) { FactoryGirl.create(:user) }
+
+      describe "in the Users controller" do
+
+        describe "visiting the edit page" do
+          before { visit edit_user_path(user) }
+          it { should have_selector('title', text: 'Log in') }
+        end
+
+        #A non logged in user shouldn't be able to update through the terminal
+        describe "submitting to the update action" do
+          before { put user_path(user) }
+          specify { response.should redirect_to(login_path) }
+        end
+      end
+    end
+
+    describe "as wrong user" do
+      let(:user) { FactoryGirl.create(:user) }
+      let(:user2) { FactoryGirl.create(:user2) }
+      before { log_in user }
+
+      describe "visiting Users#edit page" do
+        before { visit edit_user_path(user2) }
+        it { should_not have_selector('title', text: full_title('Edit user')) }
+      end
+
+      describe "submitting a PUT request to the Users#update action" do
+        before { put user_path(user2) }
+        specify { response.should redirect_to(root_path) }
+      end
     end
   end
 
@@ -98,7 +122,7 @@ describe "User pages" do
         visit user_path(user) 
       end
 
-      describe "not sufficient privelages" do
+      describe "not sufficient privileges" do
         it { should_not have_selector('h1',    text: user.name) }
         it { should_not have_selector('title', text: user.name) }
       end
@@ -109,7 +133,7 @@ describe "User pages" do
         log_in(user)
         visit user_path(user) 
       end
-      describe "sufficient privelages" do
+      describe "sufficient privileges" do
         it { should have_selector('h2',    text: user.name) }
         it { should have_selector('title', text: user.name) }
       end
@@ -135,7 +159,7 @@ describe "User pages" do
       visit new_user_path 
     end
 
-    describe "not sufficient privelages" do
+    describe "not sufficient privileges" do
       it { should_not have_selector('h1',    text: 'Create') }
       it { should_not have_selector('title', text: 'Create') }
     end

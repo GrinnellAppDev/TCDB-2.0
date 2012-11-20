@@ -10,9 +10,9 @@
 	<%= image_tag("default_profile_image.png", id:"profilepic", class:"pull-left") %>
 <% end %>
 
-<!-- Show edit button if you are the user.  -->
-<% if @user == current_user %>
-	<center><a class="btn" href="<%= edit_user_path(current_user) %>">Edit Profile</a></center>
+<!-- Show edit button if you are the user. or an admin  -->
+<% if @user == current_user || current_user.rank == "TCC" %>
+	<center><a class="btn" href="<%= edit_user_path(@user) %>">Edit Profile</a></center>
 <% end %>
 
 <br>
