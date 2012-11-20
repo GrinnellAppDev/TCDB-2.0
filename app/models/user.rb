@@ -28,6 +28,19 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true
   validates :email, presence: true
 
+    def get_user_shifts
+      Shift.find(:all, :conditions => {:userid => self.id})
+    end
+
+    def get_future_user_shifts
+      get_user_shifts.keep_if {|x| x.starttime > Time.now - (60 * 15)}
+    end
+
+    def get_next_week_user_shifts
+      get_future_user_shifts.keep_if{|x| x.starttime < Time.now + (60 * 60 *  24 * 7)}
+    end
+
+
   private
     def create_remember_token
       self.remember_token = SecureRandom.urlsafe_base64

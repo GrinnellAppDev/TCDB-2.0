@@ -2,6 +2,9 @@ class UsersController < ApplicationController
 before_filter :logged_in_user
 before_filter :tcc,             only: [:new, :create, :edit]
 
+  def home
+  end
+  
   def show
     @user = User.find(params[:id])
   end

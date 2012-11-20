@@ -18,6 +18,17 @@ describe User do
                      password: "foobar", password_confirmation: "foobar")
     @tcc = User.new(username:"tccname1", name: "Example TCC", rank:"TCC",
                      password: "foobar", password_confirmation: "foobar")
+    @shift = Shift.new(labid: "1", filled:"false", starttime: Time.now, 
+                      endtime: Time.now + 60, userid: @user.id)
+    @shift_future = Shift.new(labid: "1", filled:"false", starttime: Time.now + (60 * 60 * 24), 
+                      endtime: Time.now + 60 + (60 * 60 * 24), userid: @user.id)
+    @shift_next_week = Shift.new(labid: "1", filled:"false", starttime: Time.now + (60 * 60 * 24 * 7), 
+                      endtime: Time.now + 60 + (60 * 60 * 24 * 7), userid: @user.id)
+    @shift_two_weeks = Shift.new(labid: "1", filled:"false", starttime: Time.now + (60 * 60 * 24 * 14), 
+                      endtime: Time.now + 60 + (60 * 60 * 24 * 14), userid: @user.id)
+    @shift_past = Shift.new(labid: "1", filled:"false", starttime: Time.now - (60 * 17), 
+                      endtime: Time.now - 60 , userid: @user.id)
+
   end
 
   subject { @user }
@@ -93,4 +104,64 @@ describe "when username is not present" do
     before { @user.save }
     its(:remember_token) { should_not be_blank }
   end
+
+  describe "get user shifts" do
+    before do
+      @user.save
+      @shift[:userid] = @user.id
+      @shift.save 
+    end
+    let(:test) {@user.get_user_shifts.include?(@shift)}
+     specify{ test.should be_true}
+  end
+
+  describe "get future user shifts" do
+    before do
+      @user.save
+      @shift[:userid] = @user.id
+      @shift.save 
+      @shift_past[:userid] = @user.id
+      @shift_past.save
+      @shift_future[:userid] = @user.id
+      @shift_future.save
+    end
+     let(:test) {@user.get_future_user_shifts.include?(@shift)}
+     specify{ test.should be_true}
+     
+     let(:test1) {@user.get_future_user_shifts.include?(@shift_future)}
+     specify{ test1.should be_true}
+     
+     let(:test2) {@user.get_future_user_shifts.include?(@shift_past)}
+     specify{ test2.should be_false}
+   end
+ 
+  describe "get next week user shifts" do
+    before do
+      @user.save
+      @shift[:userid] = @user.id
+      @shift.save 
+      @shift_past[:userid] = @user.id
+      @shift_past.save
+      @shift_future[:userid] = @user.id
+      @shift_future.save
+      @shift_next_week[:userid] = @user.id
+      @shift_next_week.save
+      @shift_two_weeks[:userid] = @user.id
+      @shift_two_weeks.save
+    end
+      let(:test) {@user.get_next_week_user_shifts.include?(@shift)}
+      specify{ test.should be_true}
+      
+      let(:test1) {@user.get_next_week_user_shifts.include?(@shift_future)}
+      specify{ test1.should be_true}
+      
+      let(:test2) {@user.get_next_week_user_shifts.include?(@shift_past)}
+      specify{ test2.should be_false}
+
+      let(:test3) {@user.get_next_week_user_shifts.include?(@shift_next_week)}
+      specify{ test3.should be_true}
+      
+      let(:test4) {@user.get_next_week_user_shifts.include?(@shift_two_weeks)}
+      specify{ test4.should be_false}
+    end
 end
