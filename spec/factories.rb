@@ -18,4 +18,13 @@ FactoryGirl.define do
       username "kantersi"
     end
   end
+
+  factory :shift do
+    labid "1"
+    filled "1"
+    starttime "Time.now + 1k"
+    endtime "Time.now + 2k"
+    userid "1"
+  end
+
 end

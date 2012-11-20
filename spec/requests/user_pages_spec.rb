@@ -151,8 +151,22 @@ describe "User pages" do
       visit new_user_path 
     end
     describe "no user logged in" do
-      it { should_not have_selector('h1',    text: 'Create') }
-      it { should_not have_selector('title', text: 'Create') }
+        it { should_not have_selector('h1',    text: 'Create') }
+        it { should_not have_selector('title', text: 'Create') }
+      end
+    end
+
+  describe "homepage after login" do
+    let(:user) { FactoryGirl.create(:user)}
+    let(:shift) { FactoryGirl.create(:shift)}
+
+    before do 
+      log_in(user)
+      visit  root_path
+    end
+
+    describe "page displays shifts" do
+       pending "Until we know how we want to represent shifts"
     end
   end
 
