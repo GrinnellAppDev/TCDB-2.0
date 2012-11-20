@@ -1,17 +1,19 @@
 class UsersController < ApplicationController
-before_filter :logged_in_user
-before_filter :tcc, :only => [:new, :create, :edit]
+  before_filter :logged_in_user
+
+  before_filter :tcc,             only: [:new, :create ]
+  before_filter :correct_user,    only: [:edit, :update]
 
   def home
-    @time_worked = TimeWorked.new( :userid => current_user.id )
+    @time_worked = TimeWorked.new(:userid => current_user.id)
   end
-  
+
   def show
     @user = User.find(params[:id])
   end
-	
+
   def new
-  	@user = User.new
+    @user = User.new
   end
 
   def create
@@ -26,13 +28,29 @@ before_filter :tcc, :only => [:new, :create, :edit]
   def edit
     @user = User.find(params[:id])
   end
-  
+
   def update
+
     @user = User.find(params[:id])
-    if @user.update_attributes(params[:user])
-      flash[:success] = "Profile updated"
-      redirect_to @user
+    current_user_test = current_user?(@user)
+
+    if params[:user].include?(:password)
+      @user.updating_password = true
     else
+      @user.updating_password = false
+    end
+
+    if @user.update_attributes(params[:user])
+      flash.now[:success] = "Profile updated"
+      # Remember_token gets reset when the user is saved we have to relog
+      # in the the user updates his/her own account details.
+      # http://ruby.railstutorial.org/chapters/updating-showing-and-deleting-users#sec-updating_users
+      if current_user_test
+        log_in @user
+      end
+      render 'edit'
+    else
+      flash.now[:failure] = "Profile not updated"
       render 'edit'
     end
   end
@@ -41,10 +59,15 @@ before_filter :tcc, :only => [:new, :create, :edit]
   def logged_in_user
     if(!logged_in?)
       redirect_to login_url
-  end
+    end
 
-  def tcc
-    redirect_to root_url unless tcc?
+    def tcc
+      redirect_to root_url unless tcc?
+    end
+
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_path) unless current_user?(@user) || tcc?
+    end
   end
-end
 end

@@ -1,12 +1,20 @@
 <% if logged_in? %>
-	<!-- Show logged in page.  -->
-	<h1>User Home</h1>
+<!-- Show logged in page.  -->
+<h1>User Home</h1>
 
-  <div class="row">
-  <div class="span5 widget">
-  <h2> <% if clocked_in? %> Clock Out <% else %> Clock In <% end %> </h2>
+<div class="row">
 
-  <%= form_for @time_worked do |f| %>
+<div class="span6 widget">
+<h2>Upcoming Shifts:</h2>
+<%= current_user.get_next_week_user_shifts %>
+</div>
+
+<div class="span3 offset 9 widget">
+<h2>
+<% if clocked_in? %> Clock Out <% else %> Clock In <% end %>
+</h2>
+
+<%= form_for @time_worked do |f| %>
   <%= render 'shared/error_messages', the_model: @time_worked %>
 
   <% time = Time.now %>
@@ -21,14 +29,11 @@
   <%= f.text_field :comment %>
 
   <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
-  <% end %>
-  </div> 
+<% end %>
+</div>
 
-	<div class="span5 offset8 widget">
-		<h2>Upcoming Shifts:</h2>
-		<%= current_user.get_next_week_user_shifts %>
-	</div>
+
 </div>
 <% else %>
-	<%= render :template => 'sessions/new' %>
+<%= render :template => 'sessions/new' %>
 <% end %>

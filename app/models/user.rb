@@ -11,6 +11,7 @@
 
 class User < ActiveRecord::Base
   attr_accessible :username, :email, :name, :phone, :boxNum, :pCard, :rank, :password, :password_confirmation
+  attr_accessor :updating_password
   has_secure_password
   before_save { |user| user.username = username.downcase }
   before_save { |user| user.rank = rank.upcase }
@@ -24,9 +25,15 @@ class User < ActiveRecord::Base
   validates :name, presence: true, length: { maximum: 50 }
   VALID_RANK_REGEX = /\A[T][C][T|C]?\z/i
   validates :rank, presence: true,  format: { with: VALID_RANK_REGEX }
-  validates :password, presence: true, length: { minimum: 6 }
-  validates :password_confirmation, presence: true
+  validates :password, presence: true, length: { minimum: 6 }, :if => :should_validate_password?
+  validates :password_confirmation, presence: true, :if => :should_validate_password?
+
+  
   validates :email, presence: true
+
+  VALID_PHONE_REGEX = /\(?\d{3}\)?[ -.]?\d{3}[ -.]?\d{4}/
+  validates :phone, allow_blank: true, format: {with: VALID_PHONE_REGEX}
+
 
     def get_user_shifts
       Shift.find(:all, :conditions => {:userid => self.id})
@@ -45,8 +52,13 @@ class User < ActiveRecord::Base
     def create_remember_token
       self.remember_token = SecureRandom.urlsafe_base64
     end
+
     def prep_email
       self.email = self.username + '@grinnell.edu'
+    end
+
+    def should_validate_password?
+      updating_password || new_record?
     end
 
 end

@@ -1,28 +1,47 @@
 <% provide(:title, 'Edit User') %>
+
+<div class="span6">
 <h1>Update</h1>
 <h2> <%= @user.name %> </h2>
-
+</div>
 <div class="row">
-  <div class="span6 offset3">
+  <div class="span6">
     <%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages', the_model: @user %>
 
-      <%= f.label :username %>
-      <%= f.text_field :username %>
-    
       <%= f.label :name %>
       <%= f.text_field :name %>
 
-      <%= f.label :password %>
-      <%= f.password_field :password %>
+      <%= f.label :username %>
+      <%= f.text_field :username %>
+      
+      <%= f.label :phone %>
+      <%= f.text_field :phone %>
 
-      <%= f.label :password_confirmation, "Confirmation" %>
-      <%= f.password_field :password_confirmation %>
+      <%= f.label :boxNum %>
+      <%= f.text_field :boxNum %>
+
+      <%= f.label :pCard %>
+      <%= f.text_field :pCard %>
 
 	    <%= f.label :rank %>
+
       <%= f.select :rank, [['TC'],['TCT'],['TCC']] %>
 
       <%= f.submit "Save Changes", class: "btn btn-large btn-primary" %>
+    <% end %>
+
+<hr>
+
+   <h3>Change Password</h3>
+    <br>
+    <%= form_for(@user) do |g| %>
+      <%= g.label :password %>
+      <%= g.password_field :password %>
+
+      <%= g.label :password_confirmation, "Confirm Password" %>
+      <%= g.password_field :password_confirmation %>
+      <%= g.submit "Save Password", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>
 </div>
