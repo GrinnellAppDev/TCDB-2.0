@@ -1,7 +1,5 @@
 class StaticPagesController < ApplicationController
 
-
-
   def subrequest
   end
 

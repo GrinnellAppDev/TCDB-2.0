@@ -9,6 +9,10 @@ class Shift < ActiveRecord::Base
 
   validate (:starttime_before_endtime)
 
+  def self.date_range(from,to)
+    Shift.where(:starttime => from..to)
+  end
+
   def starttime_before_endtime
     if (starttime != nil && endtime != nil)
       errors.add(:starttime, "must be before end time") unless

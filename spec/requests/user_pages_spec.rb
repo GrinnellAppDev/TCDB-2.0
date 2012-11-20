@@ -1,3 +1,4 @@
+
 require 'spec_helper'
 
 describe "User pages" do
@@ -18,7 +19,7 @@ describe "User pages" do
     end
 
     before do
-          log_in tcc 
+          log_in(tcc) 
           visit edit_user_path(tcc.id)
       end
 
@@ -122,7 +123,6 @@ describe "User pages" do
         fill_in "Name",         with: "Example User"
         fill_in "Password",     with: "foobar"
         fill_in "Confirmation", with: "foobar"
-        fill_in "Rank",         with: "TC"
         fill_in "Username",     with: "username"
       end
 
