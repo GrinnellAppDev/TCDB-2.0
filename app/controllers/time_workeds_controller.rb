@@ -18,7 +18,13 @@ class TimeWorkedsController < ApplicationController
   end
 
   def update
+
     @time_worked = TimeWorked.find(params[:id])
+    
+    if current_user.clocked_in?
+      @time_worked.endtime = Time.now
+    end
+
     if @time_worked.update_attributes(params[:time_worked])
       flash[:success] = "Profile updated"
       redirect_to root_url
