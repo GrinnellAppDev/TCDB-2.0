@@ -8,8 +8,9 @@ class TimeWorkedsController < ApplicationController
 
   def create
   	@time_worked = TimeWorked.new(params[:time_worked])
+    @time_worked.userid = current_user.id
   	if @time_worked.save
-  		redirect_to root
+  		redirect_to root_url
   	else
   		render 'clock'
   	end
