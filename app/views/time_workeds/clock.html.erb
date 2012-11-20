@@ -8,17 +8,14 @@
 
 <%= form_for @time_worked do |f| %>
 
+  <% time = Time.now %>
+
   <%= f.label :Lab %>
-  <%= f.text_field :labid %>
+  <%= f.select :labid, [['Helpdesk'], ['AV Center'], ['etc..']] %>
 
-  <%= f.label :Date %>
-  <%= f.label "a date" %>
+  <%= f.label "Date: " + time.strftime("%Y-%m-%d") %>
 
-  <%= f.label :"Start Time" %>
-  <%= f.text_field :starttime %>
-
-  <%= f.label :"End Time" %>
-  <%= f.text_field :endtime %>
+  <%= f.label "Start Time: " + time.strftime("%H:%M") %>
 
   <%= f.label :Comment %>
   <%= f.text_field :comment %>

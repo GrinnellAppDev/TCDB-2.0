@@ -20,7 +20,7 @@
       <%= f.password_field :password_confirmation %>
 
 	    <%= f.label :rank %>
-      <%= f.text_field :rank %>
+      <%= f.select :rank, [['TC'],['TCT'],['TCC']] %>
 
       <%= f.submit "Save Changes", class: "btn btn-large btn-primary" %>
     <% end %>

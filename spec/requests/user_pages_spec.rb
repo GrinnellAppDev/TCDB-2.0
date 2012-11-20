@@ -123,7 +123,6 @@ describe "User pages" do
         fill_in "Name",         with: "Example User"
         fill_in "Password",     with: "foobar"
         fill_in "Confirmation", with: "foobar"
-        fill_in "Rank",         with: "TC"
         fill_in "Username",     with: "username"
       end
 
