@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 before_filter :logged_in_user
-before_filter :tcc,             only: [:new, :create, :edit]
+before_filter :tcc,             only: [:new, :create ]
+before_filter :correct_user,    only: [:edit, :update]
 
 
   def show
@@ -29,6 +30,13 @@ before_filter :tcc,             only: [:new, :create, :edit]
     @user = User.find(params[:id])
     current_user_test = current_user?(@user)
 
+    if params[:user].include?(:password) 
+        @user.updating_password = true;
+        puts "User is validating password"
+    else
+        @user.updating_password = false;
+    end
+
     if @user.update_attributes(params[:user])
         flash.now[:success] = "Profile updated"
         # Remember_token gets reset when the user is saved we have to relog
@@ -52,6 +60,11 @@ before_filter :tcc,             only: [:new, :create, :edit]
 
   def tcc
     redirect_to root_url unless tcc? 
+  end
+
+  def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_path) unless current_user?(@user) || tcc?
   end
 
 

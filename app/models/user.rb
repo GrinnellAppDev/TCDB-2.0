@@ -11,6 +11,7 @@
 
 class User < ActiveRecord::Base
   attr_accessible :username, :email, :name, :phone, :boxNum, :pCard, :rank, :password, :password_confirmation
+  attr_accessor :updating_password
   has_secure_password
   before_save { |user| user.username = username.downcase }
   before_save { |user| user.rank = rank.upcase }
@@ -23,10 +24,14 @@ class User < ActiveRecord::Base
   VALID_RANK_REGEX = /\A[T][C][T|C]?\z/i
   validates :rank, presence: true,  format: { with: VALID_RANK_REGEX }
   validates :password, presence: true,
-              length: { :within => 6..20 }, :on => :create
+              length: { :within => 6..20 }, :if => :should_validate_password?
   validates :password_confirmation,
-                presence: true, :on => :create
+                presence: true, :if => :should_validate_password?
+
+
   validates :email, presence: true
+
+
 
   private
     def create_remember_token
@@ -34,5 +39,9 @@ class User < ActiveRecord::Base
     end
     def prep_email
       self.email = self.username + '@grinnell.edu'
+    end
+
+    def should_validate_password?
+      updating_password || new_record?
     end
 end

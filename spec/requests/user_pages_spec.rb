@@ -6,20 +6,21 @@ describe "User pages" do
 
   describe "edit" do
 
-    describe "TC accesses their edit page" do
-      #SHOULD SWITCH TO should WHEN USERS ARE GIVEN PERMISSION TO ACCESS THEIR OWN EDIT PAGE
+    describe "TC accesses their own edit page" do
       let(:user) { FactoryGirl.create(:user) }
+
       before do
         log_in user
         visit edit_user_path(user.id)
       end
 
-      describe "not sufficient privileges" do
-        it { should_not have_selector('title', text: "Edit User") }
-        it { should_not have_selector('h1',    text: "Update") }
-        it { should_not have_selector('h2',    text: user.name) }
+      describe "with sufficient privileges" do
+        it { should have_selector('title', text: "Edit User") }
+        it { should have_selector('h1',    text: "Update") }
+        it { should have_selector('h2',    text: user.name) }
       end
-      after {log_out}
+
+      after { log_out }
     end
 
     describe "View edit page as TCC" do
@@ -33,10 +34,11 @@ describe "User pages" do
         it { should have_selector('h2',    text: tcc.name) }
       end
 
-      describe "with invalid information" do      
+      describe "with invalid information (not including password)" do      
         before { fill_in "Username",     with: "a" * 11 }
         before { click_button "Save Changes" }
         it { should have_content('Profile not updated') }
+
       end
 
       describe "with valid information" do
@@ -64,6 +66,12 @@ describe "User pages" do
         before { fill_in "Password",     with: "a" * 11 }
         before { click_button "Save Password" }
         it { should have_content('Profile not updated') }
+
+        describe "with blank password" do  
+          before { click_button "Save Password" }
+          it { should have_content('Profile not updated') }
+        end
+
       end
 
       describe "password with valid information" do      
@@ -102,14 +110,10 @@ describe "User pages" do
       let(:user2) { FactoryGirl.create(:user2) }
       before { log_in user }
 
-      describe "visiting Users#edit page" do
+      #A TC cannot edit another TC's page
+      describe "visiting different users page" do
         before { visit edit_user_path(user2) }
         it { should_not have_selector('title', text: full_title('Edit user')) }
-      end
-
-      describe "submitting a PUT request to the Users#update action" do
-        before { put user_path(user2) }
-        specify { response.should redirect_to(root_path) }
       end
     end
   end
