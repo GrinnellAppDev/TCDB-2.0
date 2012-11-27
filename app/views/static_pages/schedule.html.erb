@@ -1,3 +1,12 @@
 <% provide(:title, "Schedule") %>
 
 <h1>Schedule</h1>
+
+<h2>Helpdesk</h2>
+<table>
+	<%current_time = Time.now 
+	for i in 0..5 %>
+	<tr> <%= current_time.strftime("%a, %b %d") %> </tr>
+	<%current_time = Time.now.tomorrow()
+	end %>
+</table>
