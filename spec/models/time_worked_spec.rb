@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe TimeWorked do
    # create temporary Shift instace @s
-  before { @clocked_shift = TimeWorked.new( starttime: Time.now, endtime: Time.now + 60, labid: Lab.names(:helpdesk), userid: 1 ) }
+  before { @clocked_shift = TimeWorked.new( starttime: Time.now, endtime: Time.now + 60, lab_id: Lab.names(:helpdesk), userid: 1 ) }
   
   # set subject to @s for 'it' reference
   subject{ @clocked_shift }
@@ -10,7 +10,7 @@ describe TimeWorked do
   # insure that method names exits
   it {should respond_to(:starttime)}
   it {should respond_to(:endtime)}
-  it {should respond_to(:labid)}
+  it {should respond_to(:lab_id)}
   it {should respond_to(:userid) }
   it {should respond_to(:payrate)}
   
@@ -31,8 +31,8 @@ describe TimeWorked do
     it { should be_valid }
   end
 
-  describe "when labid is not present" do
-    before { subject.labid = nil }
+  describe "when lab_id is not present" do
+    before { subject.lab_id = nil }
     it { should_not be_valid }
   end
 

@@ -20,15 +20,15 @@ describe User do
     @tcc.rank = "TCC"
     #@tcc = User.new(username:"tccname1", name: "Example TCC", rank:"TCC",
     #                 password: "foobar", password_confirmation: "foobar", phone: "111-111-1111")
-    @shift = Shift.new(labid: "1", filled:"false", starttime: Time.now, 
+    @shift = Shift.new(lab_id: "1", filled:"false", starttime: Time.now, 
                       endtime: Time.now + 60, userid: @user.id)
-    @shift_future = Shift.new(labid: "1", filled:"false", starttime: Time.now + (60 * 60 * 24), 
+    @shift_future = Shift.new(lab_id: "1", filled:"false", starttime: Time.now + (60 * 60 * 24), 
                       endtime: Time.now + 60 + (60 * 60 * 24), userid: @user.id)
-    @shift_next_week = Shift.new(labid: "1", filled:"false", starttime: Time.now + (60 * 60 * 24 * 7), 
+    @shift_next_week = Shift.new(lab_id: "1", filled:"false", starttime: Time.now + (60 * 60 * 24 * 7), 
                       endtime: Time.now + 60 + (60 * 60 * 24 * 7), userid: @user.id)
-    @shift_two_weeks = Shift.new(labid: "1", filled:"false", starttime: Time.now + (60 * 60 * 24 * 14), 
+    @shift_two_weeks = Shift.new(lab_id: "1", filled:"false", starttime: Time.now + (60 * 60 * 24 * 14), 
                       endtime: Time.now + 60 + (60 * 60 * 24 * 14), userid: @user.id)
-    @shift_past = Shift.new(labid: "1", filled:"false", starttime: Time.now - (60 * 17), 
+    @shift_past = Shift.new(lab_id: "1", filled:"false", starttime: Time.now - (60 * 17), 
                       endtime: Time.now - 60 , userid: @user.id)
 
   end

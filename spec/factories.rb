@@ -20,7 +20,7 @@ FactoryGirl.define do
   end
 
   factory :shift do
-    labid "1"
+    lab_id "1"
     filled "1"
     starttime "Time.now + 1k"
     endtime "Time.now + 2k"

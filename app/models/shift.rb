@@ -1,10 +1,10 @@
 class Shift < ActiveRecord::Base
-  attr_accessible :endtime, :filled, :labid, :starttime, :userid
+  attr_accessible :endtime, :filled, :lab_id, :starttime, :userid
 
   # validation
   validates(:endtime, :presence => true)
   validates(:starttime, :presence => true)
-  validates(:labid, :presence => true)
+  validates(:lab_id, :presence => true)
   validates(:filled, :inclusion => {:in => [true, false]})
 
   validate (:starttime_before_endtime)

@@ -11,11 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121110205404) do
+ActiveRecord::Schema.define(:version => 20121127214133) do
 
   create_table "shifts", :force => true do |t|
     t.boolean  "filled"
-    t.integer  "labid"
+    t.integer  "lab_id"
     t.integer  "userid"
     t.datetime "starttime"
     t.datetime "endtime"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(:version => 20121110205404) do
   end
 
   create_table "time_workeds", :force => true do |t|
-    t.integer  "labid"
+    t.integer  "lab_id"
     t.integer  "userid"
     t.datetime "starttime"
     t.datetime "endtime"
