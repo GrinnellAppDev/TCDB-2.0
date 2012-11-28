@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121127214133) do
+ActiveRecord::Schema.define(:version => 20121128081405) do
 
   create_table "shifts", :force => true do |t|
     t.boolean  "filled"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(:version => 20121127214133) do
     t.datetime "starttime"
     t.datetime "endtime"
     t.string   "comment"
-    t.integer  "shiftid"
+    t.integer  "shift_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.float    "payrate"
