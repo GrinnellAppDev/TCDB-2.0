@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
 
 
   def get_user_shifts
-    Shift.find(:all, :conditions => {:userid => self.id})
+    Shift.find(:all, :conditions => {:user_id => self.id})
   end
 
   def get_future_user_shifts
@@ -48,8 +48,8 @@ class User < ActiveRecord::Base
   end
 
   def current_time_worked
-    #@time_worked ||= TimeWorked.where(endtime: nil).find_by_userid(current_user.id)
-    @time_worked ||= TimeWorked.where(:endtime => nil).find_by_userid(self.id)
+    #@time_worked ||= TimeWorked.where(endtime: nil).find_by_user_id(current_user.id)
+    @time_worked ||= TimeWorked.where(:endtime => nil).find_by_user_id(self.id)
   end
 
   def clocked_in?

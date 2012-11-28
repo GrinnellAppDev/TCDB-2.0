@@ -24,7 +24,7 @@ FactoryGirl.define do
     filled "1"
     starttime "Time.now + 1k"
     endtime "Time.now + 2k"
-    userid "1"
+    user_id "1"
   end
 
 end

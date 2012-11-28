@@ -1,5 +1,5 @@
 class TimeWorked < ActiveRecord::Base
-  attr_accessible :comment, :endtime, :lab_id, :shiftid, :starttime, :userid, :payrate
+  attr_accessible :comment, :endtime, :lab_id, :shiftid, :starttime, :user_id, :payrate
 
   # to do defaults..
   after_initialize :init
@@ -13,7 +13,7 @@ class TimeWorked < ActiveRecord::Base
   # validation
   validates(:starttime, :presence => true)
   validates(:lab_id, :presence => true)
-  validates(:userid, presence: true)
+  validates(:user_id, presence: true)
   validates(:payrate, presence: true)
 
   validate (:starttime_before_endtime)
