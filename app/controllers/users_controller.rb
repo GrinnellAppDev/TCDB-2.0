@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   before_filter :correct_user,    only: [:edit, :update]
 
   def home
-    @time_worked = TimeWorked.new(:userid => current_user.id)
+    @time_worked = TimeWorked.new(:user_id => current_user.id)
   end
 
   def show

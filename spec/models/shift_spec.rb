@@ -62,10 +62,10 @@ describe Shift do
     it{should_not be_valid}
   end
 
-  # Insure after adding userid value @s is still valid
-  describe "when userid is added" do
+  # Insure after adding user_id value @s is still valid
+  describe "when user_id is added" do
     before do
-      @s.userid = 23
+      @s.user_id = 23
     end
 
     it{should be_valid}
