@@ -23,6 +23,8 @@ Tcdb2::Application.routes.draw do
   match '/totalhrs', to: 'static_pages#totalhrs'
   match '/timesheet', to: 'static_pages#timesheet'
 
+  match '/prepsemester', to: 'shifts#prepsemester'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

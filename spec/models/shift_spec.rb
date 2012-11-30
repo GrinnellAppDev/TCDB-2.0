@@ -2,25 +2,25 @@ require 'spec_helper'
 
 describe Shift do
  
-  # create temporary Shift instace @s
+  # create temporary Shift instance @s
   before {@s = Shift.new(starttime: Time.now, endtime: Time.now + 60, labid: 5, filled: false)}
   
   # set subject to @s for 'it' reference
   subject{@s}
 
-  # insure that method names exits
+  # Ensure that method names exits
   it {should respond_to(:starttime)}
   it {should respond_to(:endtime)}
   it {should respond_to(:labid)}
   it {should respond_to(:filled)}
  
 
-  # Insure @s is valid after initial creation
+  # Ensure @s is valid after initial creation
   describe "when shift has just been created" do
     it{should be_valid}
   end
   
-  # Insure  test fails if certain values are nil that should not be
+  # Ensure test fails if certain values are nil that should not be
   describe "when start time is not present" do
     before { @s.starttime = nil }
     it {should_not be_valid}
@@ -62,7 +62,7 @@ describe Shift do
     it{should_not be_valid}
   end
 
-  # Insure after adding userid value @s is still valid
+  # Ensure after adding userid value @s is still valid
   describe "when userid is added" do
     before do
       @s.userid = 23
@@ -70,5 +70,7 @@ describe Shift do
 
     it{should be_valid}
   end
+
+
   
 end

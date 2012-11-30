@@ -7,7 +7,7 @@ describe TimeWorked do
   # set subject to @s for 'it' reference
   subject{ @clocked_shift }
 
-  # insure that method names exits
+  # Ensure that method names exits
   it {should respond_to(:starttime)}
   it {should respond_to(:endtime)}
   it {should respond_to(:labid)}
