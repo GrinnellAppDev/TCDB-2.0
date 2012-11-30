@@ -11,7 +11,7 @@
   <% time = Time.now %>
 
   <%= f.label :Lab %>
-  <%= f.select :labid, [['Helpdesk'], ['AV Center'], ['etc..']] %>
+  <%= f.select :lab_id, [['Helpdesk'], ['AV Center'], ['etc..']] %>
 
   <%= f.label "Date: " + time.strftime("%Y-%m-%d") %>
 

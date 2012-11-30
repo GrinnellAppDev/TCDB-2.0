@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe TimeWorked do
    # create temporary Shift instace @s
-  before { @clocked_shift = TimeWorked.new( starttime: Time.now, endtime: Time.now + 60, labid: Lab.names(:helpdesk), userid: 1 ) }
+  before { @clocked_shift = TimeWorked.new( starttime: Time.now, endtime: Time.now + 60, lab_id: Lab.names(:helpdesk), user_id: 1 ) }
   
   # set subject to @s for 'it' reference
   subject{ @clocked_shift }
@@ -10,8 +10,8 @@ describe TimeWorked do
   # insure that method names exits
   it {should respond_to(:starttime)}
   it {should respond_to(:endtime)}
-  it {should respond_to(:labid)}
-  it {should respond_to(:userid) }
+  it {should respond_to(:lab_id)}
+  it {should respond_to(:user_id) }
   it {should respond_to(:payrate)}
   
 
@@ -31,13 +31,13 @@ describe TimeWorked do
     it { should be_valid }
   end
 
-  describe "when labid is not present" do
-    before { subject.labid = nil }
+  describe "when lab_id is not present" do
+    before { subject.lab_id = nil }
     it { should_not be_valid }
   end
 
-  describe "when userid is not set" do
-    before { subject.userid = nil }
+  describe "when user_id is not set" do
+    before { subject.user_id = nil }
     it { should_not be_valid }
   end
 
@@ -87,15 +87,15 @@ describe TimeWorked do
     it{should_not be_valid}
   end
 
-  # Ensure after adding userid value @s is still valid
-  describe "when userid is added" do
-    before { subject.userid = 1 }
+  # Ensure after adding user_id value @s is still valid
+  describe "when user_id is added" do
+    before { subject.user_id = 1 }
     it{should be_valid}
   end
 
-  # Ensure after adding userid value @s is still valid
-  describe "when userid is missing" do
-    before { subject.userid = nil }
+  # Ensure after adding user_id value @s is still valid
+  describe "when user_id is missing" do
+    before { subject.user_id = nil }
     it{should_not be_valid}
   end
  

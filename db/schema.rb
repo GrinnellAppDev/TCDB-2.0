@@ -11,12 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121110205404) do
+ActiveRecord::Schema.define(:version => 20121128081959) do
 
   create_table "shifts", :force => true do |t|
     t.boolean  "filled"
-    t.integer  "labid"
-    t.integer  "userid"
+    t.integer  "lab_id"
+    t.integer  "user_id"
     t.datetime "starttime"
     t.datetime "endtime"
     t.datetime "created_at", :null => false
@@ -24,12 +24,12 @@ ActiveRecord::Schema.define(:version => 20121110205404) do
   end
 
   create_table "time_workeds", :force => true do |t|
-    t.integer  "labid"
-    t.integer  "userid"
+    t.integer  "lab_id"
+    t.integer  "user_id"
     t.datetime "starttime"
     t.datetime "endtime"
     t.string   "comment"
-    t.integer  "shiftid"
+    t.integer  "shift_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.float    "payrate"

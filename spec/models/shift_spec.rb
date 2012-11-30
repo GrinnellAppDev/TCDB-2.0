@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Shift do
  
   # create temporary Shift instace @s
-  before {@s = Shift.new(starttime: Time.now, endtime: Time.now + 60, labid: 5, filled: false)}
+  before {@s = Shift.new(starttime: Time.now, endtime: Time.now + 60, lab_id: 5, filled: false)}
   
   # set subject to @s for 'it' reference
   subject{@s}
@@ -11,7 +11,7 @@ describe Shift do
   # insure that method names exits
   it {should respond_to(:starttime)}
   it {should respond_to(:endtime)}
-  it {should respond_to(:labid)}
+  it {should respond_to(:lab_id)}
   it {should respond_to(:filled)}
  
 
@@ -31,8 +31,8 @@ describe Shift do
     it {should_not be_valid}
   end
 
-  describe "when labid is not present" do
-    before {@s.labid = nil}
+  describe "when lab_id is not present" do
+    before {@s.lab_id = nil}
     it {should_not be_valid}
   end
 
@@ -62,10 +62,10 @@ describe Shift do
     it{should_not be_valid}
   end
 
-  # Insure after adding userid value @s is still valid
-  describe "when userid is added" do
+  # Insure after adding user_id value @s is still valid
+  describe "when user_id is added" do
     before do
-      @s.userid = 23
+      @s.user_id = 23
     end
 
     it{should be_valid}

@@ -7,19 +7,19 @@ module TimeWorkedsHelper
 	posssible_shifts = Shift.where( :starttime => (Time.now-15.minutes)..(Time.now+30.minutes))
 
 
-    #time = Shift.find_by_userid current_user.id
+    #time = Shift.find_by_user_id current_user.id
     #check possible shifts for nil
-    shift = possible_shifts.find_by_userid(current_user.id)
+    shift = possible_shifts.find_by_user_id(current_user.id)
     if mentoring
       time_worked.payrate = "9.10" #TODO dry up magic numbers
     end
 
-    if (shift != nil && shift.labid = lab) #and there's only one result
+    if (shift != nil && shift.lab_id = lab) #and there's only one result
       shift_assoc(time_worked, shift)
       # shift.tw_id = time_worked.id // TODO: add this in the future
       # TimeWorked should also include a reference to the filled shift..
     else
-      time_worked.labid = lab
+      time_worked.lab_id = lab
     end
     time_worked.save!
     # TODO: figure out how to rescue if the sift isn't valid..
@@ -41,8 +41,8 @@ module TimeWorkedsHelper
   #end
 
   def current_time_worked
-    #@time_worked ||= TimeWorked.where(endtime: nil).find_by_userid(current_user.id)
-    @time_worked ||= TimeWorked.where(:endtime => nil).find_by_userid(current_user.id)
+    #@time_worked ||= TimeWorked.where(endtime: nil).find_by_user_id(current_user.id)
+    @time_worked ||= TimeWorked.where(:endtime => nil).find_by_user_id(current_user.id)
   end
 
   def clocked_in?
