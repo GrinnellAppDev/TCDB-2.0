@@ -4,9 +4,17 @@
 
 <h2>Helpdesk</h2>
 <table>
-	<%current_time = Time.now 
-	for i in 0..5 %>
-	<tr> <%= current_time.strftime("%a, %b %d") %> </tr>
-	<%current_time = Time.now.tomorrow()
+	<tr>
+	<%current_time = Time.now.beginning_of_week
+	for i in 0..6 %>
+	<td> <%= current_time.strftime("%a, %b %d ") %> </td>
+	<%current_time = current_time.tomorrow()
 	end %>
+	</tr>
+
+	lab 
+
+	for i in get_lab_shifts
+
+
 </table>

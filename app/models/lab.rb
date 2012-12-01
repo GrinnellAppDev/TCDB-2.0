@@ -1,4 +1,8 @@
-module Lab
+class Lab < ActiveRecord::Base
+	 attr_accessible :labid, :labname
+
+validates (:labid,:presence => true)
+validates (:labname,:presence => true)
 
 	@@labnames = { 
 		nolab: 0,
@@ -22,6 +26,10 @@ module Lab
 
 	 def get_lab_shifts
     Shift.find(:all, :conditions => {:labid => self.id})
+  	end
+
+  def order_by_starttime
+  	get_lab_shifts.order_by([:starttime, :asc])
   end
 
 end
