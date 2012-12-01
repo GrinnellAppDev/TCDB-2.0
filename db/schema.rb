@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121128081959) do
+ActiveRecord::Schema.define(:version => 20121201194259) do
+
+  create_table "labs", :force => true do |t|
+    t.integer  "lab_id"
+    t.string   "labname"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "shifts", :force => true do |t|
     t.boolean  "filled"

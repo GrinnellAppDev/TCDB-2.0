@@ -1,10 +1,7 @@
 class Lab < ActiveRecord::Base
-	 attr_accessible :labid, :labname
+  attr_accessible :lab_id, :labname
 
-validates (:labid,:presence => true)
-validates (:labname,:presence => true)
-
-	@@labnames = { 
+  	@@labnames = { 
 		nolab: 0,
 		helpdesk: 1,
 		helpdesk2: 2,
@@ -31,5 +28,5 @@ validates (:labname,:presence => true)
   def order_by_starttime
   	get_lab_shifts.order_by([:starttime, :asc])
   end
-
+  
 end

@@ -1,5 +1,7 @@
 Tcdb2::Application.routes.draw do
 
+  get "labs/new"
+
   root to: 'users#home'
 
   match '/newuser' , to: 'users#new'
