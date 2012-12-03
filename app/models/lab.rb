@@ -24,7 +24,7 @@ class Lab < ActiveRecord::Base
 	end
 
 	 def get_lab_shifts
-    Shift.find(:all, :conditions => {:labid => self.id})
+    Shift.find(:all, :conditions => {:lab_id => self.lab_id})
   	end
 
   def order_by_starttime

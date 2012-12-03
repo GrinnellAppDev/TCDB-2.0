@@ -2,6 +2,20 @@
 
 <h1>Schedule</h1>
 
+
+<div class="btn-group">
+  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+    Helpdesk
+    <span class="caret"></span>
+  </a>
+<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+  <li><a tabindex="-1" href="#">Helpdesk 1</a></li>
+  <li><a tabindex="-1" href="#">Helpdesk 2</a></li>
+  <li><a tabindex="-1" href="#">Helpdesk 3</a></li>
+  </ul>
+</div>
+
+
 <h2>Helpdesk</h2>
 <table>
 	<tr>
@@ -12,9 +26,7 @@
 	end %>
 	</tr>
 
-	lab 
-
-	for i in get_lab_shifts
-
-
+	<% for shift in helpdesk.get_lab_shifts %>
+<ul><%=shift.starttime.strftime("%A %b %e from %R to ")%>
+<%end%>
 </table>
