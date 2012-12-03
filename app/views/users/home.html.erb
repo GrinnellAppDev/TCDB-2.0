@@ -6,9 +6,7 @@
 
 <div class="span6 widget">
 <h2>Upcoming Shifts:</h2>
-<%for shift in current_user.get_next_week_user_shifts %>
-<ul><%=shift.starttime.strftime("%A %b %e from %R to ")%> <%=shift.endtime.strftime("%R")%> </ul>
-<%end%>
+<%= render 'shared/shifts_next_week', current_user: current_user %>
 </div>
 
 <div class="span3 offset 9 widget">

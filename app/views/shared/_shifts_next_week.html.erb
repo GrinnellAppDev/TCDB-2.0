@@ -1,0 +1,3 @@
+<%for shift in current_user.get_next_week_user_shifts %>
+<ul><%=shift.starttime.strftime("%A %b %e from %R to ")%> <%=shift.endtime.strftime("%R")%> </ul>
+<%end%>
