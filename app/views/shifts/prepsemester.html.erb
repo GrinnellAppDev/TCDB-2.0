@@ -1,0 +1,70 @@
+
+<%= form_tag do %>
+	<table>
+
+		<tr>
+			<td>
+				<%= text_field_tag(placeholder: "Start time") %>		
+			</td>
+			<td>
+				<%= text_field_tag(placeholder: "End time") %>		
+			</td>
+			<td>
+				<%= text_field(:shift, :endtime) %>		
+			</td>
+		</tr>
+
+		<tr>  <%= submit_tag("Create All Shifts!") %> </tr>
+
+	</table>
+
+
+<!-- 
+  Form contents
+<% end %>
+
+
+<%= form_tag("/search", :method => "get") do %>
+  <%= label_tag(:q, "Search for:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<% end %> -->
+
+<!-- 
+<form>
+	<table>
+
+		<tr>
+			<td>
+				<INPUT TYPE="TEXT" NAME="name" SIZE="20">
+			</td>
+			<td>
+				<INPUT TYPE="TEXT" NAME="name" SIZE="20">
+			</td>
+		</tr>
+
+	</table>
+</form>
+ -->
+
+
+<!-- 
+<FORM METHOD="POST" ACTION="http://www.cs.tut.fi/cgi-bin/run/~jkorpela/echo.cgi">
+<TABLE>
+
+  <TR>
+    <TD>
+      <INPUT TYPE="TEXT" NAME="name" SIZE="20">
+    </TD>
+    <TD>
+      <INPUT TYPE="TEXT" NAME="name" SIZE="20">
+    </TD>
+  </TR>
+
+  <TR>
+    <TD>Your E-mail address</TD>
+    <TD><INPUT TYPE="TEXT" NAME="email" SIZE="25"></TD>
+  </TR>
+</TABLE>
+<P><INPUT TYPE="SUBMIT" VALUE="Submit" NAME="B1"></P>
+</FORM> -->
