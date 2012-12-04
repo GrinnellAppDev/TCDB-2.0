@@ -169,4 +169,43 @@ describe "when username is not present" do
       let(:test4) {@user.get_next_week_user_shifts.include?(@shift_two_weeks)}
       specify{ test4.should be_false}
     end
+
+    describe "shift via user -" do
+      before(:each) do
+        @user.save
+        @new_shift = @user.shifts.create(:filled => false, :lab_id => 1, :starttime => Time.now + 1.day, :endtime => Time.now + 1.day + 2.hours)
+      end
+
+      describe "create" do
+        specify {@new_shift.should be_valid}
+      end
+
+      describe "find" do
+        before do
+          @the_shift = @user.shifts.find(@new_shift.id)
+        end
+
+        specify {@the_shift.should be_valid}
+      end
+    end
+
+    describe "time_worked via user -" do
+      before(:each) do
+        @user.save
+        @new_time_worked = @user.time_workeds.create(:comment => "hi", :endtime => Time.now, :lab_id => 1, :shift_id => 1, :starttime => Time.now - 2.hours)
+      end
+      
+      describe "create" do
+        specify {@new_time_worked.should be_valid}
+      end
+
+      describe "find" do
+        before do
+          @the_time_worked = @user.time_workeds.find(@new_time_worked.id)
+        end
+
+        specify {@the_time_worked.should be_valid}
+      end
+    end
+
 end
