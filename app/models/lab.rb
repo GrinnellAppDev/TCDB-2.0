@@ -1,8 +1,11 @@
 class Lab < ActiveRecord::Base
-  attr_accessible :lab_id, :labname
+	attr_accessible :lab_id, :labname
 
-  validates(:lab_id, :presence => true)
-  validates(:labname, :presence => true)
+	validates(:lab_id, :presence => true)
+	validates(:labname, :presence => true)
+
+	has_many :shift_times
+
 
 	nolab = Lab.find_or_create_by_labname(:lab_id => 0, :labname => "Nolab")
 	helpdesk = Lab.find_or_create_by_labname(:lab_id => 1, :labname => "Helpdesk")
@@ -18,17 +21,16 @@ class Lab < ActiveRecord::Base
 	ccl = Lab.find_or_create_by_labname(:lab_id => 11, :labname => "Ccl")
 	appdev = Lab.find_or_create_by_labname(:lab_id => 12, :labname => "Appdev")
 
-  
+
 	def self.names(lab) 
 		@@labnames[lab]
 	end
 
-	 def get_lab_shifts
-    Shift.find(:all, :conditions => {:lab_id => self.lab_id})
-  	end
+	def get_lab_shifts
+		Shift.find(:all, :conditions => {:lab_id => self.lab_id})
+	end
 
-  def order_by_starttime
-  	get_lab_shifts.order_by([:starttime, :asc])
-  end
-
+	def order_by_starttime
+		get_lab_shifts.order_by([:starttime, :asc])
+	end
 end
