@@ -27,5 +27,9 @@ class ShiftsController < ApplicationController
 		
 	end
 
+	def create_all_shifts
+		puts "HAHAHAHAH"
+	end
+
 end
 
