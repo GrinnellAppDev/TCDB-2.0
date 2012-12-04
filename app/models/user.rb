@@ -12,6 +12,7 @@
 class User < ActiveRecord::Base
   #Every shift can have a user associated with it. Users can have multiple shifts
   has_many :shifts
+  has_many :time_workeds
 
   attr_accessible :username, :email, :name, :phone, :boxNum, :pCard, :rank, :password, :password_confirmation
   attr_accessor :updating_password

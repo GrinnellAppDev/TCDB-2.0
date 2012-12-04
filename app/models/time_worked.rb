@@ -1,5 +1,8 @@
 class TimeWorked < ActiveRecord::Base
-  attr_accessible :comment, :endtime, :lab_id, :shiftid, :starttime, :user_id, :payrate
+  attr_accessible :comment, :endtime, :lab_id, :shift_id, :starttime, :user_id, :payrate
+
+  # Every Time Worked record must be associated with a user.
+  belongs_to :users
 
   # to do defaults..
   after_initialize :init
