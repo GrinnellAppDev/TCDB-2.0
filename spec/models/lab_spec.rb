@@ -8,6 +8,7 @@ describe Lab do
   
    it {should respond_to(:lab_id)}
    it {should respond_to(:labname)}
+   it {should respond_to(:shift_times)}
 
    describe "when lab has just been created" do
     it{should be_valid}

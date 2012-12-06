@@ -1,70 +1,47 @@
-
-<%= form_tag do %>
-	<table>
-
-		<tr>
-			<td>
-				<%= text_field_tag(placeholder: "Start time") %>		
-			</td>
-			<td>
-				<%= text_field_tag(placeholder: "End time") %>		
-			</td>
-			<td>
-				<%= text_field(:shift, :endtime) %>		
-			</td>
-		</tr>
-
-		<tr>  <%= submit_tag("Create All Shifts!") %> </tr>
-
-	</table>
+<h1>Create All Shifts</h1>
 
 
-<!-- 
-  Form contents
-<% end %>
+<%= form_for(@shift_time) do |f| %>
+      <%= render 'shared/error_messages', the_model: @shift_time %>
 
+      <table>
 
-<%= form_tag("/search", :method => "get") do %>
-  <%= label_tag(:q, "Search for:") %>
-  <%= text_field_tag(:q) %>
-  <%= submit_tag("Search") %>
+      	<tr>
+      		<th>Start Time</th>
+			<th>End Time</th>
+      	</tr>
+
+<!-- # in projects/new.rhtml
+<% @project.tasks.each_with_index do |task, index| %>
+  <% fields_for "tasks[#{index}]", task do |f| %>
+    <p><%= f.text_field :name %></p>
+  <% end %>
 <% end %> -->
 
-<!-- 
-<form>
-	<table>
 
-		<tr>
-			<td>
-				<INPUT TYPE="TEXT" NAME="name" SIZE="20">
-			</td>
-			<td>
-				<INPUT TYPE="TEXT" NAME="name" SIZE="20">
-			</td>
-		</tr>
+      	<% @shift_times.count.times do |i| %>
+			<tr>
+				<td>
+					<%= f.text_field :start, placeholder: "Start", value: @shift_times[i].start, size: 10 %>
+				</td>
+				<td>
+					<%= f.text_field :end, placeholder: "End",
+					value: @shift_times[i].end, size: 10 %>	
+				</td>
+			</tr>
+		<% end %>
 
+			<tr>
+				<td>
+					<%= f.text_field :start, placeholder: "Start", size: 10 %>
+				</td>
+				<td>
+					<%= f.text_field :end, placeholder: "End",
+					 size: 10 %>	
+				</td>
+			</tr>
+
+		<tr>  <%= submit_tag("Create All Shifts!") %> </tr>
 	</table>
-</form>
- -->
 
-
-<!-- 
-<FORM METHOD="POST" ACTION="http://www.cs.tut.fi/cgi-bin/run/~jkorpela/echo.cgi">
-<TABLE>
-
-  <TR>
-    <TD>
-      <INPUT TYPE="TEXT" NAME="name" SIZE="20">
-    </TD>
-    <TD>
-      <INPUT TYPE="TEXT" NAME="name" SIZE="20">
-    </TD>
-  </TR>
-
-  <TR>
-    <TD>Your E-mail address</TD>
-    <TD><INPUT TYPE="TEXT" NAME="email" SIZE="25"></TD>
-  </TR>
-</TABLE>
-<P><INPUT TYPE="SUBMIT" VALUE="Submit" NAME="B1"></P>
-</FORM> -->
+<% end %>
