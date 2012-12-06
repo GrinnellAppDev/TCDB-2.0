@@ -1,0 +1,38 @@
+<h1>Edit Page for a lab</h1>
+
+<h2><%=  @lab.labname %> </h2>
+
+
+<div>
+	<%= form_for (@lab) do |l| %>
+		<table>
+	      	<tr>
+	      		<th>Start Time</th>
+				<th>End Time</th>
+	      	</tr>
+
+
+		<% for @shift_time in @lab.shift_times %>
+
+					  <%= fields_for "shift_time[]"  do |f| %>
+
+				<tr>
+					<td>
+						<%= f.text_field :start, placeholder: "Start",  size: 10 %>
+					</td>
+					<td>
+						<%= f.text_field :end, placeholder: "End",
+						size: 10 %>	
+					</td>
+				</tr>
+
+		  <% end %>
+		<% end %>
+
+
+	 <%= l.submit "Save" %>
+
+	<% end %>
+</div>
+
+
