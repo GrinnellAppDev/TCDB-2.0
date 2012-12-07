@@ -1,3 +1,5 @@
+require 'scrape'
+
 class UsersController < ApplicationController
   before_filter :logged_in_user
 
@@ -14,6 +16,16 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    username = params[:username]
+    # check to see if username is already assigned (e.g. from /makeuser)
+    if username
+      info = UserInfo::get_user_info(username)
+      if info  # if scrape didn't fail
+        @user.username = username
+        @user.name = info[:name]
+        @user.boxNum = info[:box]
+      end
+    end
   end
 
   def create
@@ -53,6 +65,9 @@ class UsersController < ApplicationController
       flash.now[:failure] = "Profile not updated"
       render 'edit'
     end
+  end
+
+  def gen_info
   end
 
   private
