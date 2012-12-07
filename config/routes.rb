@@ -26,10 +26,13 @@ Tcdb2::Application.routes.draw do
   match '/timesheet', to: 'static_pages#timesheet'
 
   match '/prepsemester', to: 'shifts#prepsemester'
+    match '/create_all', to: 'shifts#create_all_shifts'
+
   resources :shift_times 
   resources :labs
+  resources :shifts
 
-  
+
 
 
   # The priority is based upon order of creation:

@@ -19,10 +19,8 @@ def update
   # if @lab.valid? && @lab.shift_times.all?(&:valid?)
     @lab.save!
     @lab.shift_times.each(&:save!)
-    #redirect_to :action => 'show', :id => @lab
-    # renshfder 
-  # else
-    render :action => 'edit'
+    redirect_to :action => 'edit', :id => @lab
+    #render :action => 'edit'
   # end
 end
 

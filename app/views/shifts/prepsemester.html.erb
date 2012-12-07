@@ -1,47 +1,43 @@
 <h1>Create All Shifts</h1>
 
+<!-- defaulting to helpdesk for now -->
+<h2>Make sure to double check the <%= link_to "lab times", edit_lab_path(@lab) %> </h2>
 
-<%= form_for(@shift_time) do |f| %>
-      <%= render 'shared/error_messages', the_model: @shift_time %>
+<!-- 
 
-      <table>
-
-      	<tr>
-      		<th>Start Time</th>
-			<th>End Time</th>
-      	</tr>
-
-<!-- # in projects/new.rhtml
-<% @project.tasks.each_with_index do |task, index| %>
-  <% fields_for "tasks[#{index}]", task do |f| %>
-    <p><%= f.text_field :name %></p>
-  <% end %>
-<% end %> -->
+Beginning Semester
+last day of shifts for the regularly scheduled semester
+last day of shifts for entire semester
 
 
-      	<% @shift_times.count.times do |i| %>
-			<tr>
-				<td>
-					<%= f.text_field :start, placeholder: "Start", value: @shift_times[i].start, size: 10 %>
-				</td>
-				<td>
-					<%= f.text_field :end, placeholder: "End",
-					value: @shift_times[i].end, size: 10 %>	
-				</td>
-			</tr>
-		<% end %>
+last day of shifts before fall break.
+latest time required for working ^ day.
+first day after fall break.
+last day of shifts before thanksgiving.
+latest time required for working ^ day.
+first day after thanksgiving break.
 
-			<tr>
-				<td>
-					<%= f.text_field :start, placeholder: "Start", size: 10 %>
-				</td>
-				<td>
-					<%= f.text_field :end, placeholder: "End",
-					 size: 10 %>	
-				</td>
-			</tr>
+OR
 
-		<tr>  <%= submit_tag("Create All Shifts!") %> </tr>
-	</table>
+last day of shifts before spring break.
+latest time required for working ^ day.
+first day after spring break.
 
-<% end %>
+ -->
+
+
+
+
+ <%= form_tag create_all_path do %>
+ 	<%= label_tag "First day of semester" %>
+ 	<%= text_field_tag "semester_start_date" , nil, placeholder: "Semester start date" %>
+
+ 	<%= label_tag "Reading day" %>
+ 	<%= text_field_tag "reading_day", nil, placeholder: "Reading day" %>
+
+ 	<%= label_tag "Last day of finals" %>
+ 	<%= text_field_tag "semester_end_date", nil, placeholder: "Semester end date" %>
+
+
+ 	<%= submit_tag "Save" %>
+ <% end %>

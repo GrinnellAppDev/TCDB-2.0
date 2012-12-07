@@ -5,6 +5,7 @@ class Lab < ActiveRecord::Base
 	validates(:labname, :presence => true)
 
 	has_many :shift_times
+	has_many :lab_times
 
 
 	nolab = Lab.find_or_create_by_labname(:lab_id => 0, :labname => "Nolab")

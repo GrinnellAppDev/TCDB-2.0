@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121204215925) do
+ActiveRecord::Schema.define(:version => 20121206212419) do
+
+  create_table "lab_times", :force => true do |t|
+    t.datetime "open"
+    t.datetime "close"
+    t.integer  "lab_id"
+    t.integer  "day_of_week"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "labs", :force => true do |t|
     t.integer  "lab_id"

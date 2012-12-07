@@ -10,7 +10,7 @@ class ShiftsController < ApplicationController
 		if @shift.save
       		flash.now[:success] = "Shift created"
       		#CHECK redirect somewhere. 
-      		render 'new'
+    		redirect_to :action => 'create'
 		else 
 			flash.now[:failure] = "Shift not created"
 			render 'new'
@@ -27,18 +27,18 @@ class ShiftsController < ApplicationController
 		#Need a way to access the current lab that's being looked at. 
   		#Default to Helpdesk for now. 
   		@lab = Lab.find(2)
-  		@shift_time = @lab.shift_times.build(params[:shift_time])
 
-  		#Get an array of all shiftimes.
-  		@shift_times = ShiftTime.find_all_by_lab_id (1)
-  		if @shift_times.nil?
-  			@shift_times = Array.new(1) { ShiftTime.new }
-  		end
+  		@fall_break_start_date = DateTime.new()
+  		@fall_break_start_time = DateTime.new()
+
 
 	end
 
 	def create_all_shifts
 		puts "HAHAHAHAH"
+
+		flash[:success] = params[:semester_start_date]
+		redirect_to prepsemester_path
 	end
 
 end
