@@ -66,7 +66,7 @@ module TimeWorkedsHelper
 
   def shift_assoc(timeWorked, shift)
     shift.filled = true
-    timeWorked.shiftid = shift.id
+    timeWorked.shift_id = shift.id
     # shift.time_workeds_id = timeWorked.id
   end
 
