@@ -24,6 +24,7 @@ class UsersController < ApplicationController
         @user.username = username
         @user.name = info[:name]
         @user.boxNum = info[:box]
+        @user.year = info[:year]
       end
     end
   end
