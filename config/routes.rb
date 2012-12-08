@@ -3,18 +3,15 @@ Tcdb2::Application.routes.draw do
   root to: 'users#home'
 
   match '/newuser' , to: 'users#new'
-  get "users/new"
   resources :users
 
   match '/login',  to: 'sessions#new'
   match '/logout', to: 'sessions#destroy', via: :delete
   resources :sessions, only: [:new, :create, :destroy]
 
-  get "time_workeds/clock"
   match '/time_workeds/clock', to: 'time_workeds#clock'
   match '/clock', to: 'time_workeds#clock'
   resources :time_workeds
-
   
   match '/combo', to: 'static_pages#combo'
   match '/subrequest', to: 'static_pages#subrequest'
