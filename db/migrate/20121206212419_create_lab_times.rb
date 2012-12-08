@@ -1,8 +1,8 @@
 class CreateLabTimes < ActiveRecord::Migration
   def change
     create_table :lab_times do |t|
-      t.datetime :open
-      t.datetime :close
+      t.timestamp :open
+      t.timestamp :close
       t.integer :lab_id
       t.integer :day_of_week
 

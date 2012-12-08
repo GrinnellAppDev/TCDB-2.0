@@ -1,8 +1,8 @@
 class CreateShiftTimes < ActiveRecord::Migration
   def change
     create_table :shift_times do |t|
-      t.datetime :start
-      t.datetime :end
+      t.timestamp :start
+      t.timestamp :end
       t.integer :lab_id
 
       t.timestamps

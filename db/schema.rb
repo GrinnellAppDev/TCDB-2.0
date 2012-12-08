@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(:version => 20121206212419) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "shift_times", ["lab_id"], :name => "index_shift_times_on_lab_id"
+
   create_table "shifts", :force => true do |t|
     t.boolean  "filled"
     t.integer  "lab_id"

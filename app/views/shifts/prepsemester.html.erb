@@ -30,14 +30,14 @@ first day after spring break.
 
  <%= form_tag create_all_path do %>
  	<%= label_tag "First day of semester" %>
- 	<%= text_field_tag "semester_start_date" , nil, placeholder: "Semester start date" %>
+ 	<%= text_field_tag "semester_start_date" , nil, placeholder: "11/29/2012" , value: Date.today %>
 
  	<%= label_tag "Reading day" %>
- 	<%= text_field_tag "reading_day", nil, placeholder: "Reading day" %>
+ 	<%= text_field_tag "reading_day", nil, placeholder: "11/29/2012" %>
 
  	<%= label_tag "Last day of finals" %>
- 	<%= text_field_tag "semester_end_date", nil, placeholder: "Semester end date" %>
+ 	<%= text_field_tag "semester_end_date", nil, placeholder: "Semester end date" , value: 3.days.from_now %>
 
 
- 	<%= submit_tag "Save" %>
+ 	<%= submit_tag "Create All Shifts" %>
  <% end %>
