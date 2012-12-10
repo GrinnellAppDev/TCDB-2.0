@@ -43,7 +43,7 @@ class Lab < ActiveRecord::Base
   end
 
 def self.helpdesk1
-  	Lab.find_or_create_by_labname(:lab_id => 1, :labname => "Helpdesk1")
+  	Lab.find_or_create_by_labname(:lab_id => 1, :labname => "Helpdesk")
   end
 
 def self.helpdesk2
@@ -55,15 +55,15 @@ def self.helpdesk3
   end
 
 def self.av1
-  	Lab.find_or_create_by_labname(:lab_id => 4, :labname => "AV1")
+  	Lab.find_or_create_by_labname(:lab_id => 4, :labname => "Av1")
   end
 
 def self.av2
-  	Lab.find_or_create_by_labname(:lab_id => 5, :labname => "AV2")
+  	Lab.find_or_create_by_labname(:lab_id => 5, :labname => "Av2")
   end
 
 def self.av3
-  	Lab.find_or_create_by_labname(:lab_id => 6, :labname => "AV3")
+  	Lab.find_or_create_by_labname(:lab_id => 6, :labname => "Av3")
   end
 
 def self.statslab
@@ -83,7 +83,7 @@ def self.dormlabs
   end
 
 def self.burling
-  	Lab.find_or_create_by_labname(:lab_id => 11, :labname => "Burling 1st")
+  	Lab.find_or_create_by_labname(:lab_id => 11, :labname => "Burling1st")
   end
 
 def self.appdev

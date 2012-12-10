@@ -8,7 +8,7 @@ class ShiftsController < ApplicationController
 		@shift = Shift.new(params[:shift])
 
 		if @shift.save
-			flash.now[:success] = "Shift created"
+		flash.now[:success] = "Shift created"
       		#CHECK redirect somewhere. 
       		redirect_to :action => 'create'
       	else 

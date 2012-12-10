@@ -13,6 +13,7 @@
 		<% if current_user.rank == "TCC" %>
 			<li class="<%= 'active' if current_page?(newuser_path) %>"><%= link_to "Create User", newuser_path %></li>
       <li class="<%= 'active' if current_page?(prepsemester_path) %>"><%= link_to "Create All Shifts", prepsemester_path %></li>
+      <li class="<%= 'active' if current_page?(labs_path) %>"><%= link_to "Edit All Labs", labs_path %></li>
 		<% end %>
 
     </ul>
