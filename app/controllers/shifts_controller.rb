@@ -28,10 +28,6 @@ class ShiftsController < ApplicationController
   		#Default to Helpdesk for now. 
   		@lab = Lab.find(2)
 
-  		@fall_break_start_date = DateTime.new()
-  		@fall_break_start_time = DateTime.new()
-
-
   	end
 
   	def create_all_shifts
@@ -56,12 +52,13 @@ class ShiftsController < ApplicationController
   					# puts shift_time.end.minute
   					# puts lab_time.open.minute
   					# puts lab_time.close.minute
-
-  					if shift_time.start.hour > lab_time.open.hour || shift_time.start.hour >= lab_time.open.hour && shift_time.start.minute >= lab_time.open.minute
-  						if shift_time.end.hour < lab_time.close.hour || shift_time.end.hour <= lab_time.close.hour && shift_time.end.minute <= lab_time.close.minute
+  					if shift_time.start.hour > lab_time.open.hour || shift_time.start.hour >= lab_time.open.hour && shift_time.start.min >= lab_time.open.min
+  						if shift_time.end.hour < lab_time.close.hour || shift_time.end.hour <= lab_time.close.hour && shift_time.end.min <= lab_time.close.min
   							puts "A shift created"
+  							start = DateTime.new(day.year, day.month, day.day, shift_time.start.hour, shift_time.start.min)
+							stop = DateTime.new(day.year, day.month, day.day, shift_time.end.hour, shift_time.end.min)
   							shift = Shift.new(lab_id: lab.lab_id, filled:"false", 
-  								starttime:shift_time.start, endtime:shift_time.end )
+  								starttime:start, endtime:stop )
   							shift.save
   							puts shift.starttime
   							puts shift.endtime
@@ -70,13 +67,7 @@ class ShiftsController < ApplicationController
   				end
   			end
   		end
-
-
   	end
-
-
-
-
 
   	flash[:success] = params[:semester_start_date]
   	redirect_to prepsemester_path

@@ -15,7 +15,7 @@ class Lab < ActiveRecord::Base
 	av2 = Lab.find_or_create_by_labname(:lab_id => 4, :labname => "Av2")
 	burling1st = Lab.find_or_create_by_labname(:lab_id => 5, :labname => "Burling1st")
 	av3 = Lab.find_or_create_by_labname(:lab_id => 6, :labname => "Av3")
-	staslab = Lab.find_or_create_by_labname(:lab_id => 7, :labname => "Staslab")
+	staslab = Lab.find_or_create_by_labname(:lab_id => 7, :labname => "Statslab")
 	helpdesk3 = Lab.find_or_create_by_labname(:lab_id => 8, :labname => "Helpdesk3")
 	labs_academic = Lab.find_or_create_by_labname(:lab_id => 9, :labname => "Labs_academic")
 	labs_dorm = Lab.find_or_create_by_labname(:lab_id => 10, :labname => "Labs_dorm")

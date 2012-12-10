@@ -3,6 +3,7 @@
 <h2><%=  @lab.labname %> </h2>
 
 
+
 <div class="span4">
 	<%= form_for (@lab) do |l| %>
 	<table class="shiftimes table-condensed span3">
@@ -15,14 +16,16 @@
 
 		<% for @shift_time in @lab.shift_times %>
 
-		<%= fields_for "shift_time[]"  do |f| %>
+		<%=  fields_for "shift_time[]"  do |f| %>
+
+	
 
 		<tr>
 			<td>
-				<%= f.text_field :start, placeholder: "Start",  size: 10 , class: "input-small"  %>
+				<%=  f.text_field :start, placeholder: "Start",  size: 10 , class: "input-small" , value: @shift_time.start.to_s(:shift_time) %>
 			</td>
 			<td>
-				<%= f.text_field :end, placeholder: "End" , class: "input-small",
+				<%= f.text_field :end, placeholder: "End" , class: "input-small", value: @shift_time.end.to_s(:shift_time),
 				size: 10 %>	
 			</td>
 		</tr>
@@ -49,11 +52,11 @@
 		<tr>
 			<td> <%= Date::DAYNAMES[@lab_time.day_of_week]%></td>
 			<td>
-				<%= f.text_field :open, placeholder: "Open",  size: 10, class: "input-small" %>
+				<%= f.text_field :open, placeholder: "Open",  size: 10, class: "input-small", value: @lab_time.open.to_s(:shift_time) %>
 			</td>
 			<td>
 				<%= f.text_field :close, placeholder: "Close",
-				size: 10 , class: "input-small" %>	
+				size: 10 , class: "input-small", value: @lab_time.close.to_s(:shift_time) %>	
 			</td>
 		</tr>
 		<% end %>

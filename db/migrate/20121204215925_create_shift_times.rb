@@ -7,6 +7,6 @@ class CreateShiftTimes < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :shift_times, :lab_id
+        add_index :shift_times, :lab_id
   end
 end
