@@ -11,12 +11,7 @@
 
 	<br>
 		<% if current_user.rank == "TCC" %>
-<<<<<<< HEAD
 			<li class="<%= 'active' if current_page?(makeuser_path) %>"><%= link_to "Create User", makeuser_path %></li>
-=======
-			<li class="<%= 'active' if current_page?(newuser_path) %>"><%= link_to "Create User", newuser_path %></li>
-      <li class="<%= 'active' if current_page?(prepsemester_path) %>"><%= link_to "Create All Shifts", prepsemester_path %></li>
->>>>>>> c18dbf3a45de04df1ce77b146d7a9baac0278cd6
 		<% end %>
 
     </ul>

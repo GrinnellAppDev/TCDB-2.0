@@ -68,12 +68,6 @@ module Tcdb2
 
     #Set timezone to Chicago
     config.time_zone = 'Central Time (US & Canada)'
-
-    #This is wrong! (should be local as below)
-     #config.active_record.default_timezone = 'Central Time (US & Canada)'
-
-     #This should be local!!
-    config.active_record.default_timezone = :local
-
+    config.active_record.default_timezone = 'Central Time (US & Canada)'
   end
 end
