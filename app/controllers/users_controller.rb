@@ -25,6 +25,7 @@ class UsersController < ApplicationController
         @user.name = info[:name]
         @user.boxNum = info[:box]
         @user.year = info[:year]
+        @user.photo_url = info[:photo_url]
       end
     end
   end
