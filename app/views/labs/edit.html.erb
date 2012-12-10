@@ -1,0 +1,70 @@
+<h1>Edit Page for a lab</h1>
+
+<h2><%=  @lab.labname %> </h2>
+
+
+
+<div class="span4">
+	<%= form_for (@lab) do |l| %>
+	<table class="shiftimes table-condensed span3">
+		<caption>Shift Times for <%= @lab.labname %></caption>
+		<tr>
+			<th>Start Time</th>
+			<th>End Time</th>
+		</tr>
+
+
+		<% for @shift_time in @lab.shift_times %>
+
+		<%=  fields_for "shift_time[]"  do |f| %>
+
+	
+
+		<tr>
+			<td>
+				<%=  f.text_field :start, placeholder: "Start",  size: 10 , class: "input-small" , value: @shift_time.start.to_s(:shift_time) %>
+			</td>
+			<td>
+				<%= f.text_field :end, placeholder: "End" , class: "input-small", value: @shift_time.end.to_s(:shift_time),
+				size: 10 %>	
+			</td>
+		</tr>
+		<% end %>
+
+		<% end %>
+	</table>
+</div>
+
+<div class="span4">
+
+	<table class="labtimes table-condensed">
+		<caption>Lab Times for <%= @lab.labname %></caption>
+		<tr>
+			<th></th>
+			<th>Open Time</th>
+			<th>Close Time</th>
+		</tr>
+
+
+		<% for @lab_time in @lab.lab_times %>
+
+		<%= fields_for "lab_time[]"  do |f| %>
+		<tr>
+			<td> <%= Date::DAYNAMES[@lab_time.day_of_week]%></td>
+			<td>
+				<%= f.text_field :open, placeholder: "Open",  size: 10, class: "input-small", value: @lab_time.open.to_s(:shift_time) %>
+			</td>
+			<td>
+				<%= f.text_field :close, placeholder: "Close",
+				size: 10 , class: "input-small", value: @lab_time.close.to_s(:shift_time) %>	
+			</td>
+		</tr>
+		<% end %>
+		<% end %>
+	</table>
+
+	<%= l.submit "Save" , class: "btn" %>
+
+	<% end %>
+</div>
+

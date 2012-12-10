@@ -2,12 +2,12 @@ require 'spec_helper'
 
 describe TimeWorked do
    # create temporary Shift instace @s
-  before { @clocked_shift = TimeWorked.new( starttime: Time.now, endtime: Time.now + 60, lab_id: Lab.names(:helpdesk), user_id: 1 ) }
+  before { @clocked_shift = TimeWorked.new( starttime: Time.now, endtime: Time.now + 60, lab_id: 1, user_id: 1 ) }
   
   # set subject to @s for 'it' reference
   subject{ @clocked_shift }
 
-  # insure that method names exits
+  # Ensure that method names exits
   it {should respond_to(:starttime)}
   it {should respond_to(:endtime)}
   it {should respond_to(:lab_id)}
