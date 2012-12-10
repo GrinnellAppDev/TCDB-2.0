@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121128081959) do
+ActiveRecord::Schema.define(:version => 20121208203830) do
 
   create_table "shifts", :force => true do |t|
     t.boolean  "filled"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20121128081959) do
     t.string   "rank"
     t.string   "username"
     t.string   "remember_token"
+    t.string   "year"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

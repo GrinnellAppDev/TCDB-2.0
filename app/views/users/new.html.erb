@@ -8,9 +8,15 @@
 
       <%= f.label :username %>
       <%= f.text_field :username %>
-    
+
       <%= f.label :name %>
       <%= f.text_field :name %>
+
+      <%= f.label :year, "Class Year" %>
+      <%= f.text_field :year %>
+
+      <%= f.label :boxNum, "Mailbox" %>
+      <%= f.text_field :boxNum %>
 
       <%= f.label :password %>
       <%= f.password_field :password %>
@@ -18,7 +24,7 @@
       <%= f.label :password_confirmation, "Confirmation" %>
       <%= f.password_field :password_confirmation %>
 
-	    <%= f.label :rank %>
+      <%= f.label :rank %>
       <%= f.select :rank, [['TC'],['TCT'],['TCC']] %>
 
       <%= f.submit "Create User", class: "btn btn-large btn-primary" %>

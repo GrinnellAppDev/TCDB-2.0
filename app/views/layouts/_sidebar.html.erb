@@ -11,7 +11,7 @@
 
 	<br>
 		<% if current_user.rank == "TCC" %>
-			<li class="<%= 'active' if current_page?(newuser_path) %>"><%= link_to "Create User", newuser_path %></li>
+			<li class="<%= 'active' if current_page?(makeuser_path) %>"><%= link_to "Create User", makeuser_path %></li>
 		<% end %>
 
     </ul>
