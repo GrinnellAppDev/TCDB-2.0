@@ -1,9 +1,14 @@
 <% provide(:title, "Log in") %>
-<h1>Log in</h1>
+
+<div class="span10">
+
+  <h1>Log in</h1>
+
+</div>
 
 
 <div class="row">
-  <div id="login" class="span6 offset3">
+  <div id="login" class="span6 offset2">
     <%= form_for(:session, url: sessions_path) do |f| %>
 
       <%= f.label :username %>
