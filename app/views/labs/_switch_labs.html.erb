@@ -1,0 +1,54 @@
+
+<div class="btn-toolbar" style="margin: 0;" align="center">
+	<div class="btn-group">
+		<button class="btn btn-inverse dropdown-toggle" data-toggle="dropdown"> Helpdesk
+			<span class="caret"></span>
+		</button>
+
+		<ul class="dropdown-menu">
+			<li><%= link_to "Helpdesk", lab_path(Lab.find_by_labname("Helpdesk")) %></li>
+			<li><%= link_to "Helpdesk2", lab_path(Lab.find_by_labname("Helpdesk2")) %></li>
+			<li><%= link_to "Helpdesk3", lab_path(Lab.find_by_labname("Helpdesk3")) %></li>
+		</ul>
+
+	</div>
+
+
+	<div class="btn-group">
+		<button  id="btn" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+			AV
+			<span class="caret"></span>
+		</button>
+
+		<ul class="dropdown-menu">
+			<li><%= link_to "AV Center 1", lab_path(Lab.find_by_labname("Av1")) %></li>
+			<li><%= link_to "AV Center 2", lab_path(Lab.find_by_labname("Av2")) %></li>
+			<li><%= link_to "AV Center 3", lab_path(Lab.find_by_labname("Av3")) %></li>
+		</ul>
+	</div>
+
+	<div class="btn-group">
+		<button class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+			Labs
+			<span class="caret"></span>
+		</button>
+
+		<ul class="dropdown-menu">
+			<li><%= link_to "Statslab", lab_path(Lab.find_by_labname("Statslab")) %></li>
+			<li><%= link_to "CCL", lab_path(Lab.find_by_labname("CCL")) %></li>
+			<li><%= link_to "Academic Labs", lab_path(Lab.find_by_labname("Academic Labs")) %></li>
+			<li><%= link_to "Dorm Labs", lab_path(Lab.find_by_labname("Dorm Labs")) %></li>
+		</ul>
+	</div>
+
+
+	<div class="btn-group">
+
+		<a class="btn btn-warning" href="<%= edit_lab_path(Lab.find_by_labname("Burling1st")) %>">Burling</a>
+	</div>
+
+	<div class="btn-group">
+		<a class="btn btn-success" href="<%= edit_lab_path(Lab.find_by_labname("Appdev")) %>">Appdev</a>
+
+	</div>
+</div>
