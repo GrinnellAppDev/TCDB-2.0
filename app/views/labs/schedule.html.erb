@@ -88,13 +88,15 @@ function displayContent(id, div)
 <%for i in 0..11%>
 <div id=lab<%=i+1%>>
 <%for shift in Lab.getlab(i).get_lab_shifts%>
-<%=shift.starttime.strftime('%A %b %e from %R to ')%>
+<%=shift.starttime.strftime('%A %b %e from %R to ')%>  
 <%=shift.endtime.strftime('%R')%>
 <br>
 <%end%>
 <br>
 </div>
 <%end%>
+
+
 
 </div>
 

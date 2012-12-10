@@ -44,7 +44,11 @@ class ShiftsController < ApplicationController
   			for shift_time in lab.shift_times
   				if !shift_time.nil?
   					lab_time = lab.lab_times.find_by_day_of_week(day.wday)
-  					puts shift_time.start.hour
+  					print "Looking at shift time that starts: "
+            print  shift_time.start 
+            print " and ends at: "
+            puts shift_time.end
+
   					# puts shift_time.end.hour
   					# puts lab_time.open.hour
   					# puts lab_time.close.hour
@@ -54,17 +58,20 @@ class ShiftsController < ApplicationController
   					# puts lab_time.close.minute
   					if shift_time.start.hour > lab_time.open.hour || shift_time.start.hour >= lab_time.open.hour && shift_time.start.min >= lab_time.open.min
   						if shift_time.end.hour < lab_time.close.hour || shift_time.end.hour <= lab_time.close.hour && shift_time.end.min <= lab_time.close.min
-  							puts "A shift created"
+  							puts "A shift created with"
   							start = DateTime.new(day.year, day.month, day.day, shift_time.start.hour, shift_time.start.min)
 							stop = DateTime.new(day.year, day.month, day.day, shift_time.end.hour, shift_time.end.min)
   							shift = Shift.new(lab_id: lab.lab_id, filled:"false", 
   								starttime:start, endtime:stop )
   							shift.save
-  							puts shift.starttime
-  							puts shift.endtime
+                print "   start time: "
+                puts shift.starttime
+                print "   end time: "
+                puts shift.endtime
   						end
   					end
   				end
+          puts 
   			end
   		end
   	end

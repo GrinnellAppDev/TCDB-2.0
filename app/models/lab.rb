@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 class Lab < ActiveRecord::Base
 	attr_accessible :lab_id, :labname
 

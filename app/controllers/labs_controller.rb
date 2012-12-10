@@ -28,6 +28,9 @@ def update
 end
 
 def schedule
+  #They aren't using this.. but they should be.. instead of allowing the view to reach the model. 
+   @lab = Lab.find(2)
+   @shifts = Shift.find(:all, :conditions => {:lab_id => 2})
 end
 
 

@@ -1,5 +1,7 @@
 class ShiftTime < ActiveRecord::Base
 	attr_accessible :end, :lab_id, :start
+  validates :lab_id, presence: true
+
 	belongs_to :lab
 
 
@@ -52,7 +54,4 @@ class ShiftTime < ActiveRecord::Base
   		lt = lab.shift_times.build(start: startTimes[i], end: endTimes[i], lab_id: lab.lab_id)
   		lt.save
   	end
-
-  validates :lab_id, presence: true
-
 end
