@@ -59,8 +59,8 @@ class ShiftsController < ApplicationController
   					if shift_time.start.hour > lab_time.open.hour || shift_time.start.hour >= lab_time.open.hour && shift_time.start.min >= lab_time.open.min
   						if shift_time.end.hour < lab_time.close.hour || shift_time.end.hour <= lab_time.close.hour && shift_time.end.min <= lab_time.close.min
   							puts "A shift created with"
-  							start = DateTime.new(day.year, day.month, day.day, shift_time.start.hour, shift_time.start.min)
-							stop = DateTime.new(day.year, day.month, day.day, shift_time.end.hour, shift_time.end.min)
+  							start = DateTime.new(day.year, day.month, day.day, shift_time.start.hour, shift_time.start.min, 0,  '-06:00')
+							stop = DateTime.new(day.year, day.month, day.day, shift_time.end.hour, shift_time.end.min, 0,  '-06:00')
   							shift = Shift.new(lab_id: lab.lab_id, filled:"false", 
   								starttime:start, endtime:stop )
   							shift.save
