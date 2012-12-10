@@ -1,0 +1,101 @@
+<% provide(:title, "Schedule") %>
+
+<script type = "text/javascript"> 
+
+$(document).ready(function() {
+    for (var i=1; i<13; i++){
+  $('#lab' + i ).hide();
+
+  }
+});
+
+function hideAll(){
+  for(var i=1; i<13; i++){
+  document.getElementById('lab' + i ).style.display = "none";
+  }
+}
+
+
+function displayContent(id, div)
+{
+  hideAll();
+
+  document.getElementById("title").innerHTML =document.getElementById(id).getAttribute("value");
+  var hideDiv = div.toString();
+  document.getElementById('lab' + hideDiv).style.display = "block";
+   
+}
+
+</script>
+
+
+<h1>Schedule</h1>
+
+<div class="btn-toolbar" style="margin: 0;" align="center">
+<div class="btn-group">
+<button class="btn btn-inverse dropdown-toggle" data-toggle="dropdown"> Helpdesk
+    <span class="caret"></span></button>
+<ul class="dropdown-menu">
+  <li><a href="#" id="helpdesk1" value="Helpdesk 1" onclick="displayContent('helpdesk1', 1)">Helpdesk 1</a></li>
+  <li><a href="#" id="helpdesk2" value="Helpdesk 2" onclick="displayContent('helpdesk2', 2)">Helpdesk 2</a></li>
+  <li><a href="#" id="helpdesk3" value="Helpdesk 3" onclick="displayContent('helpdesk3', 3)">Helpdesk 3</a></li>
+  </ul>
+ </div>
+  
+<div class="btn-group">
+  <button  id="btn" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+    AV
+    <span class="caret"></span></button>
+<ul class="dropdown-menu">
+  <li><a href="#" id="av1" value="AV 1" onclick="displayContent('av1', 4)">AV 1</a></li>
+  <li><a href="#" id="av2" value="AV 2" onclick="displayContent('av2', 5)">AV 2</a></li>
+  <li><a href="#" id="av3" value="AV 3" onclick="displayContent('av3', 6)">AV 3</a></li>
+  </ul>
+</div>
+
+<div class="btn-group">
+  <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+    Labs
+    <span class="caret"></span></button>
+<ul class="dropdown-menu">
+  <li><a href="#" id="stats" value="Statslab" onclick="displayContent('stats', 7)">Statslab</a></li>
+  <li><a href="#" id="CCL" value="CCL" onclick="displayContent('CCL', 8)">CCL</a></li>
+  <li><a href="#" id="acad" value="Academic Labs" onclick="displayContent('acad', 9)">Academic Labs</a></li>
+  <li><a href="#" id="dorm" value="Dorm Labs" onclick="displayContent('dorm', 10)">Dorm Labs</a></li>
+  </ul>
+</div>
+
+
+<div class="btn-group">
+  <button class="btn btn-warning"  id="burling" value="Burling" onclick="displayContent('burling', 11)">
+    Burling
+   </button>
+</div>
+
+<div class="btn-group">
+  <button class="btn btn-success" id="appdev" value="Appdev" onclick="displayContent('appdev', 12)">
+    Appdev
+ </button>
+</div>
+
+</div>
+
+
+<br>
+<h2 id="title">Please choose a Lab Name</h2>
+
+<div id = "page-content">
+<%for i in 0..11%>
+<div id=lab<%=i+1%>>
+<%for shift in Lab.getlab(i).get_lab_shifts%>
+<%=shift.starttime.strftime('%A %b %e from %R to ')%>
+<%=shift.endtime.strftime('%R')%>
+<br>
+<%end%>
+<br>
+</div>
+<%end%>
+
+</div>
+
+

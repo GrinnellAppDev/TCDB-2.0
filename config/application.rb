@@ -74,5 +74,6 @@ module Tcdb2
 
      #This should be local!!
     config.active_record.default_timezone = :local
+
   end
 end

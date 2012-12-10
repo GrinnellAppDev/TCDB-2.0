@@ -27,4 +27,8 @@ def update
     redirect_to :action => 'edit', :id => @lab
 end
 
+def schedule
+end
+
+
 end

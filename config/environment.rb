@@ -14,3 +14,4 @@ Time::DATE_FORMATS[:shift_time] = "%I:%M%p"
 
 #Regular Time with TimeZone (04:00AM CST)
 Time::DATE_FORMATS[:shift_time_with_time_zone] = "%I:%M%p %Z"
+
