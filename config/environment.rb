@@ -6,7 +6,7 @@ Tcdb2::Application.initialize!
 
 
 # Date format with slashes (12/27/2012)
-Time::DATE_FORMATS[:slashes] = "%m/%d/%Y"
+Time::DATE_FORMATS[:slashes] = "%d/%m/%Y"
 
 
 #Regular Time with (04:00AM CST)

@@ -44,10 +44,10 @@ class ShiftsController < ApplicationController
   			for shift_time in lab.shift_times
   				if !shift_time.nil?
   					lab_time = lab.lab_times.find_by_day_of_week(day.wday)
-  					print "Looking at shift time that starts: "
-            print  shift_time.start 
-            print " and ends at: "
-            puts shift_time.end
+  					# print "Looking at shift time that starts: "
+       #      print  shift_time.start 
+       #      print " and ends at: "
+       #      puts shift_time.end
 
   					# puts shift_time.end.hour
   					# puts lab_time.open.hour
@@ -64,19 +64,19 @@ class ShiftsController < ApplicationController
   							shift = Shift.new(lab_id: lab.lab_id, filled:"false", 
   								starttime:start, endtime:stop )
   							shift.save
-                print "   start time: "
-                puts shift.starttime
-                print "   end time: "
-                puts shift.endtime
+                # print "   start time: "
+                # puts shift.starttime
+                # print "   end time: "
+                # puts shift.endtime
   						end
   					end
   				end
-          puts 
   			end
   		end
   	end
 
-  	flash[:success] = params[:semester_start_date]
+    shift_count = Shift.count 
+  	flash[:success] = "Created a total of #{shift_count} shifts"
   	redirect_to prepsemester_path
   end
 

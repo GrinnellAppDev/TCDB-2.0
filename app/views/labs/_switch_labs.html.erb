@@ -10,16 +10,13 @@
 			<li><%= link_to "Helpdesk2", lab_path(Lab.find_by_labname("Helpdesk2")) %></li>
 			<li><%= link_to "Helpdesk3", lab_path(Lab.find_by_labname("Helpdesk3")) %></li>
 		</ul>
-
 	</div>
-
 
 	<div class="btn-group">
 		<button  id="btn" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
 			AV
 			<span class="caret"></span>
 		</button>
-
 		<ul class="dropdown-menu">
 			<li><%= link_to "AV Center 1", lab_path(Lab.find_by_labname("Av1")) %></li>
 			<li><%= link_to "AV Center 2", lab_path(Lab.find_by_labname("Av2")) %></li>
@@ -32,7 +29,6 @@
 			Labs
 			<span class="caret"></span>
 		</button>
-
 		<ul class="dropdown-menu">
 			<li><%= link_to "Statslab", lab_path(Lab.find_by_labname("Statslab")) %></li>
 			<li><%= link_to "CCL", lab_path(Lab.find_by_labname("CCL")) %></li>
