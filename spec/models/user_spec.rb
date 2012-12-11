@@ -46,6 +46,8 @@ describe User do
   it { should respond_to(:rank) }
   it { should respond_to(:authenticate) }
   it { should respond_to(:remember_token) }
+  it { should respond_to(:year) }
+  it { should respond_to(:photo_url) }
   it { should be_valid }
 describe "when username is not present" do
     before { @user.username = " " }
@@ -207,5 +209,4 @@ describe "when username is not present" do
         specify {@the_time_worked.should be_valid}
       end
     end
-
 end

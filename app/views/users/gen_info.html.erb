@@ -4,7 +4,7 @@
 <div class="row">
   <div class="span6 offset3">
     <%= form_tag("/newuser", :method => "get") do %>
-      <%= label_tag(:username, "username") %>
+      <%= label_tag(:username, "Username") %>
       <%= text_field_tag(:username) %>
       <%= submit_tag("Retrieve", {class: "btn btn-large btn-primary"}) %>
     <% end %>

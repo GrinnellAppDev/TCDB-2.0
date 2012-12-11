@@ -14,8 +14,7 @@ class User < ActiveRecord::Base
   has_many :shifts
   has_many :time_workeds
 
-  attr_accessible :username, :email, :name, :phone, :boxNum, :pCard, :rank, :password, :password_confirmation, :year
-
+  attr_accessible :username, :email, :name, :phone, :boxNum, :pCard, :rank, :password, :password_confirmation, :year, :photo_url
   attr_accessor :updating_password
   has_secure_password
   before_save { |user| user.username = username.downcase }

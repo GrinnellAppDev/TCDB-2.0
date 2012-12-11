@@ -3,7 +3,6 @@
 ################################
 # TODO                         #
 # - add tests                  #
-# - integrate with Create User #
 ################################
 
 require 'net/http'
