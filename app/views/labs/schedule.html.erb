@@ -4,14 +4,14 @@
 
 $(document).ready(function() {
     for (var i=1; i<13; i++){
-  $('#lab' + i ).hide();
+  $("#lab" + i ).hide();
 
   }
 });
 
 function hideAll(){
   for(var i=1; i<13; i++){
-  document.getElementById('lab' + i ).style.display = "none";
+  document.getElementById("lab" + i ).style.display = "none";
   }
 }
 
@@ -22,7 +22,7 @@ function displayContent(id, div)
 
   document.getElementById("title").innerHTML =document.getElementById(id).getAttribute("value");
   var hideDiv = div.toString();
-  document.getElementById('lab' + hideDiv).style.display = "block";
+  document.getElementById("lab" + hideDiv).style.display = "block";
    
 }
 
@@ -85,6 +85,8 @@ function displayContent(id, div)
 <h2 id="title">Please choose a Lab Name</h2>
 
 <div id = "page-content">
+
+
 <%for i in 0..11%>
 <div id=lab<%=i+1%>>
 <%for shift in Lab.getlab(i).get_lab_shifts%>
@@ -92,6 +94,7 @@ function displayContent(id, div)
 <%=shift.endtime.strftime('%R')%>
 <br>
 <%end%>
+
 <br>
 </div>
 <%end%>
