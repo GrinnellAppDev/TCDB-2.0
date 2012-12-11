@@ -52,8 +52,8 @@ describe "User pages" do
           fill_in "Username",     with: new_username
           fill_in "Name",         with: new_name
           fill_in "Phone",        with: new_phone
-          fill_in "Boxnum",       with: new_boxnum
-          fill_in "Pcard",        with: new_pcard
+          fill_in "Mailbox",       with: new_boxnum
+          fill_in "PCard No.",        with: new_pcard
         end
         describe "should edit user" do
           before { click_button "Save Changes" }

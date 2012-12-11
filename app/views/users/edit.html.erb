@@ -9,19 +9,25 @@
     <%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages', the_model: @user %>
 
+      <%= f.label :username %>
+      <%= f.text_field :username %>
+
       <%= f.label :name %>
       <%= f.text_field :name %>
 
-      <%= f.label :username %>
-      <%= f.text_field :username %>
+      <%= f.label :year, "Class Year" %>
+      <%= f.text_field :year %>
       
       <%= f.label :phone %>
       <%= f.text_field :phone %>
 
-      <%= f.label :boxNum %>
+      <%= f.label :boxNum, "Mailbox" %>
       <%= f.text_field :boxNum %>
 
-      <%= f.label :pCard %>
+      <%= f.label :photo_url, "Photo URL" %>
+      <%= f.text_field :photo_url %>
+
+      <%= f.label :pCard, "PCard No." %>
       <%= f.text_field :pCard %>
 
 	    <%= f.label :rank %>
