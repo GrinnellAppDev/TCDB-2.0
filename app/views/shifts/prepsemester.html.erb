@@ -1,0 +1,45 @@
+<h1 class="span10">Create All Shifts</h1>
+
+<!-- defaulting to helpdesk for now -->
+<h2 class="span10">Make sure to double check the <%= link_to "lab times",labs_path %> </h2>
+
+<!-- 
+
+Beginning Semester
+last day of shifts for the regularly scheduled semester
+last day of shifts for entire semester
+
+
+last day of shifts before fall break.
+latest time required for working ^ day.
+first day after fall break.
+last day of shifts before thanksgiving.
+latest time required for working ^ day.
+first day after thanksgiving break.
+
+OR
+
+last day of shifts before spring break.
+latest time required for working ^ day.
+first day after spring break.
+
+ -->
+
+
+<div class="span3">
+ <%= form_tag create_all_path do %>
+ 	<%= label_tag "First day of semester" %>
+ 	<%= text_field_tag "semester_start_date" , nil, value: 0.days.from_now.to_s(:slashes) %>
+<!-- 
+ 	<%= label_tag "Reading day" %>
+ 	<%= text_field_tag "reading_day", nil, value: 3.days.from_now.to_s(:slashes) %> -->
+
+ 	<%= label_tag "End of Semester" %>
+ 	<%= text_field_tag "semester_end_date", nil, value: 3.days.from_now.to_s(:slashes) %>
+
+
+ 	<%= submit_tag "Create All Shifts" , class: " btn btn-success" %>
+ <% end %>
+
+</div>
+

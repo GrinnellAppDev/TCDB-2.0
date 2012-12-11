@@ -1,0 +1,50 @@
+
+<div class="btn-toolbar" style="margin: 0;" align="center">
+	<div class="btn-group">
+		<button class="btn btn-inverse dropdown-toggle" data-toggle="dropdown"> Helpdesk
+			<span class="caret"></span>
+		</button>
+
+		<ul class="dropdown-menu">
+			<li><%= link_to "Helpdesk", :controller => :labs, :action => :schedule, :id => Lab.find_by_labname("Helpdesk").id %></li>
+			<li><%= link_to "Helpdesk2", :controller => :labs, :action => :schedule, :id => Lab.find_by_labname("Helpdesk2").id %></li>
+			<li><%= link_to "Helpdesk3", :controller => :labs, :action => :schedule, :id => Lab.find_by_labname("Helpdesk3").id %></li>
+		</ul>
+	</div>
+
+	<div class="btn-group">
+		<button  id="btn" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+			AV
+			<span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu">
+			<li><%= link_to "AV Center 1", :controller => :labs, :action => :schedule, :id => Lab.find_by_labname("Av1").id %></li>
+			<li><%= link_to "AV Center 2", :controller => :labs, :action => :schedule, :id => Lab.find_by_labname("Av2").id %></li>
+			<li><%= link_to "AV Center 3", :controller => :labs, :action => :schedule, :id => Lab.find_by_labname("Av3").id %></li>
+		</ul>
+	</div>
+
+	<div class="btn-group">
+		<button class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+			Labs
+			<span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu">
+			<li><%= link_to "Statslab", :controller => :labs, :action => :schedule, :id => Lab.find_by_labname("Statslab").id %></li>
+			<li><%= link_to "CCL", :controller => :labs, :action => :schedule, :id => Lab.find_by_labname("CCL").id %></li>
+			<li><%= link_to "Academic Labs", :controller => :labs, :action => :schedule, :id => Lab.find_by_labname("Academic Labs").id %></li>
+			<li><%= link_to "Dorm Labs", :controller => :labs, :action => :schedule, :id => Lab.find_by_labname("Dorm Labs").id %></li>
+		</ul>
+	</div>
+
+
+	<div class="btn-group">
+
+		<a class="btn btn-warning" href="/schedule?id=<%= Lab.find_by_labname("Burling1st").id %>">Burling</a>
+	</div>
+
+	<div class="btn-group">
+		<a class="btn btn-success" href="/schedule?id=<%= Lab.find_by_labname("Appdev").id %>">Appdev</a>
+
+	</div>
+</div>
