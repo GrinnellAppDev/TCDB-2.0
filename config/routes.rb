@@ -17,10 +17,17 @@ Tcdb2::Application.routes.draw do
   
   match '/combo', to: 'static_pages#combo'
   match '/subrequest', to: 'static_pages#subrequest'
-  match '/schedule', to: 'static_pages#schedule'
+  match '/schedule', to: 'labs#schedule'
   match '/directory', to: 'static_pages#directory'
   match '/totalhrs', to: 'static_pages#totalhrs'
   match '/timesheet', to: 'static_pages#timesheet'
+
+    match '/prepsemester', to: 'shifts#prepsemester'
+    match '/create_all', to: 'shifts#create_all_shifts'
+
+  resources :shift_times 
+  resources :labs
+  resources :shifts
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

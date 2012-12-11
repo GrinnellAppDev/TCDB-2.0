@@ -1,16 +1,16 @@
 class Lab < ActiveRecord::Base
-      attr_accessible :lab_id, :labname
-      has_many :shift_times
-      has_many :lab_times
+  attr_accessible :lab_id, :labname
+  has_many :shift_times
+  has_many :lab_times
 
 
-def get_lab_shifts
-  Shift.find(:all, :conditions => {:lab_id => self.lab_id})
-end
+  def get_lab_shifts
+    Shift.find(:all, :conditions => {:lab_id => self.lab_id})
+  end
 
-def order_by_starttime
-  get_lab_shifts.order_by([:starttime, :asc])
-end
+  def order_by_starttime
+    get_lab_shifts.order_by([:starttime, :asc])
+  end
 
 
 #New stuff from them... 
@@ -72,10 +72,7 @@ def self.getlab(index)
   var =  [Lab.helpdesk1, Lab.helpdesk2, Lab.helpdesk3, Lab.av1, Lab.av2, Lab.av3, Lab.statslab, Lab.ccl, Lab.acadlabs,
     Lab.dormlabs, Lab.burling, Lab.appdev]
     return var[index]
-  end  
+end  
   
-  def self.names(lab) 
-    @@labnames[lab]
-  end
-end
+
 end
