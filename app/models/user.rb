@@ -52,12 +52,20 @@ class User < ActiveRecord::Base
   end
 
   def current_time_worked
-    @time_worked ||= TimeWorked.where(:endtime => nil).find_by_user_id(self.id)
+    @time_worked ||= self.time_workeds.where(:endtime => nil).first
   end
 
   def clocked_in?
     # determine if the user is clocked
     current_time_worked != nil
+  end
+
+  def clock_in
+    return TimeWorked.new(:user_id => self.id, :starttime => Time.now )
+  end
+
+  def clock_out
+    current_time_worked.endtime = Time.now
   end
 
   private

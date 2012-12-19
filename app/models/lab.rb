@@ -1,4 +1,5 @@
 class Lab < ActiveRecord::Base
+  # This was done incorrectly.  Lab_id is really just a lab record's primary key.
   attr_accessible :lab_id, :labname
   has_many :shift_times
   has_many :lab_times

@@ -11,7 +11,7 @@ class TimeWorked < ActiveRecord::Base
 
     def init
       self.payrate ||= 8.50		#will set the default value only if it's nil
-      self.lab_id   ||= 1	# 'project' for now..
+      self.lab_id   ||= Lab.helpdesk1.id
       self.starttime ||= Time.now
     end
 
@@ -34,31 +34,17 @@ class TimeWorked < ActiveRecord::Base
     self.payrate = "9.10" #TODO dry up magic numbers
   end
 
-  def clock_in(lab)
-  
-    self.lab_id = lab
+  def shift_assoc 
+    possible_shifts = self.user.shifts.where( :starttime => (self.starttime - 15.minutes)..(self.starttime + 15.minutes))
+    shift = possible_shifts.first
 
-    # find associated shift if it exists
-    user_shifts = Shift.where(:user_id => self.user_id)
-    posssible_shifts = user_shifts.where( :starttime => (Time.now-15.minutes)..(Time.now+15.minutes))
-    shift = posssible_shifts.first
-
-    if (shift != nil && shift.lab_id = lab) #and there's only one result
+    if (shift != nil && shift.lab_id = self.lab_id) #and there's only one result
       self.shift_id = shift.id
       shift.filled = true
       shift.save
       # shift.tw_id = time_worked.id // TODO: add this in the future
       # TimeWorked should also include a reference to the filled shift..
     end
-    self.save!
-    # TODO: figure out how to rescue if the sift isn't valid..
   end
-
-  def clock_out
-
-    self.endtime = Time.now
-    self.save!
-  end
-
 
 end

@@ -100,5 +100,16 @@ describe TimeWorked do
     it{should_not be_valid}
   end
  
+  describe "shift_assoc" do
+
+    pending "when shifts are linked, filled is set"
+
+  end
+
+  describe "clock_out user" do
+
+    pending "time_worked table entry is updated with the clock_out time"
+
+  end
 
 end
