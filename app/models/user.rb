@@ -52,7 +52,6 @@ class User < ActiveRecord::Base
   end
 
   def current_time_worked
-    #@time_worked ||= TimeWorked.where(endtime: nil).find_by_user_id(current_user.id)
     @time_worked ||= TimeWorked.where(:endtime => nil).find_by_user_id(self.id)
   end
 
