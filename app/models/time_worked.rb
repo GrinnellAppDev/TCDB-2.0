@@ -26,8 +26,39 @@ class TimeWorked < ActiveRecord::Base
   def starttime_before_endtime
     if (starttime != nil && endtime != nil)
       errors.add(:starttime, "must be before end time") unless
-      self.starttime < self.endtime 
+      self.starttime < self.endtime
     end
   end 
+
+  def set_mentor_pay 
+    self.payrate = "9.10" #TODO dry up magic numbers
+  end
+
+  def clock_in(lab)
+  
+    self.lab_id = lab
+
+    # find associated shift if it exists
+    user_shifts = Shift.where(:user_id => self.user_id)
+    posssible_shifts = user_shifts.where( :starttime => (Time.now-15.minutes)..(Time.now+15.minutes))
+    shift = posssible_shifts.first
+
+    if (shift != nil && shift.lab_id = lab) #and there's only one result
+      self.shift_id = shift.id
+      shift.filled = true
+      shift.save
+      # shift.tw_id = time_worked.id // TODO: add this in the future
+      # TimeWorked should also include a reference to the filled shift..
+    end
+    self.save!
+    # TODO: figure out how to rescue if the sift isn't valid..
+  end
+
+  def clock_out
+
+    self.endtime = Time.now
+    self.save!
+  end
+
 
 end

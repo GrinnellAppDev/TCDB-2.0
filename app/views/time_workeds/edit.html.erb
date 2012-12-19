@@ -1,0 +1,11 @@
+<% if logged_in? %>
+<!-- Show logged in page.  -->
+<h1>Time Clock</h1>
+<div class="span5 offset2 widget">
+
+<%= render 'shared/time_clock', the_model: @time_worked %>
+
+</div>
+<% else %>
+<%= render :template => 'sessions/new' %>
+<% end %>

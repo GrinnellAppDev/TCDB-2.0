@@ -1,20 +1,46 @@
-<h2> <% if current_user.clocked_in? %> Clock Out <% else %> Clock In <% end %> </h2>
+<% if current_user.clocked_in? %>
+	<h2> Clock Out </h2>
 
-<%= render 'shared/error_messages', the_model: the_model %>
+    <%= render 'shared/error_messages', the_model: the_model %>
 
-<%= form_for the_model do |f| %>
+    <%= form_for the_model do |f| %>
 
-  <% time = Time.now %>
+      <%= f.label :Lab %>
+      <%= f.select :lab_id, [['Helpdesk'], ['AV Center'], ['etc..']] %>
+  
+      <%= f.label "Date: " + the_model.starttime.strftime("%Y-%m-%d") %>
+  
+      <%= f.label "Start Time: " + the_model.starttime.strftime("%H:%M") %>
+  
+      <%= f.label :Comment %>
+      <%= f.text_field :comment %>
+  
+      <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+   <% end %>
 
-  <%= f.label :Lab %>
-  <%= f.select :lab_id, [['Helpdesk'], ['AV Center'], ['etc..']] %>
+<% else %> 
 
-  <%= f.label "Date: " + time.strftime("%Y-%m-%d") %>
+	<h2> Clock In </h2>
 
-  <%= f.label "Start Time: " + time.strftime("%H:%M") %>
+	<%= render 'shared/error_messages', the_model: the_model %>
 
-  <%= f.label :Comment %>
-  <%= f.text_field :comment %>
+	<%= form_for the_model do |f| %>
 
-  <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+      <% time = Time.now %>
+
+      <%= f.label :Lab %>
+      <%= f.select :lab_id, [['Helpdesk'], ['AV Center'], ['etc..']] %>
+  
+      <%= f.label "Date: " + time.strftime("%Y-%m-%d") %>
+  
+      <%= f.label "Start Time: " + time.strftime("%H:%M") %>
+  
+      <%= f.label :Comment %>
+      <%= f.text_field :comment %>
+  
+      <%= f.hidden_field :user_id %>
+  
+      <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+    <% end %> 
+
 <% end %>

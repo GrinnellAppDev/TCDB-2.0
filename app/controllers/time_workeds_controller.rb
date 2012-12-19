@@ -2,19 +2,40 @@ class TimeWorkedsController < ApplicationController
   before_filter :logged_in_user
   
   def clock
-  	@current_time_worked = TimeWorked.where(:endtime => nil).find_by_user_id(current_user.id)
-	  @time_worked = (@current_time_worked == nil) ? TimeWorked.new( :user_id => current_user.id, :starttime => Time.now ) : @current_time_worked 
+
+    if current_user.clocked_in?
+
+      #redirect_to :action => 'edit'
+
+      self.edit
+      render 'edit'
+    else
+
+      #redirect_to :action => 'new'
+
+      self.new
+      render 'new'
+    end
+
+  end
+
+  def new
+    @time_worked = TimeWorked.new(:user_id => current_user.id, :starttime => Time.now )
   end
 
   def create
   	@time_worked = TimeWorked.new(params[:time_worked])
-    @time_worked.user_id = current_user.id
   	if @time_worked.save
+      flash[:success] = "Clocked In Successfully"
   		redirect_to root_url
   	else
   		render 'clock'
   	end
 
+  end
+
+  def edit
+    @time_worked = current_user.current_time_worked
   end
 
   def update
@@ -26,7 +47,7 @@ class TimeWorkedsController < ApplicationController
     end
 
     if @time_worked.update_attributes(params[:time_worked])
-      flash[:success] = "Profile updated"
+      flash[:success] = "Clocked Out Successfully"
       redirect_to root_url
     else
       render 'edit'
