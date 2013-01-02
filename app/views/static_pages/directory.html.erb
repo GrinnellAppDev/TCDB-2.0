@@ -3,17 +3,15 @@
 <h1>Directory</h1>
 
 
-
-<table class="table">
-
-	<th>Name</th>
-	<th>Username</th>
-	<th>E-mail</th>
-	<th>Year</th>
-	<th>Rank</th>
-	<th>Certifications</th>
-
-
+<table class="table sort_table">
+	<tr>
+		<th><%= sortable "name" %></th>
+		<th><%= sortable "username" %></th>
+		<th><%= sortable "email" %></th>
+		<th><%= sortable "year" %></th>
+		<th><%= sortable "rank" %></th>
+		<th>Certifications</th>
+	</tr>
 
 	<% @users.each do |user| %>
 	<tr>
@@ -24,6 +22,7 @@
 		<td><%= user.rank %></td>
 		<td>ErrOne has Helpesk, AVCenter certs. What? </td>
 	</tr>
+
 	<% end %>
 
 

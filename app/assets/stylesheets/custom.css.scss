@@ -175,6 +175,21 @@ input, textarea, select, .uneditable-input {
 }
 
 
+.sort_table th .current {
+  padding-right: 12px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+.sort_table th .asc {
+  background-image: url(/assets/up_arrow.gif);
+}
+
+.sort_table th .desc {
+  background-image: url(/assets/down_arrow.gif);
+}
+
+
 // .navbar .nav  li a
 // {
 //   color:#fff;
