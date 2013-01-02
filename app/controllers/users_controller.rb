@@ -1,8 +1,9 @@
 require 'scrape'
 
 class UsersController < ApplicationController
-  before_filter :logged_in_user
 
+
+  before_filter :logged_in_user
   before_filter :tcc,             only: [:new, :create ]
   before_filter :correct_user,    only: [:edit, :update]
 
@@ -54,19 +55,38 @@ class UsersController < ApplicationController
       @user.updating_password = false
     end
 
-    if @user.update_attributes(params[:user])
-      flash.now[:success] = "Profile updated"
-      # Remember_token gets reset when the user is saved we have to relog
-      # in the the user updates his/her own account details.
-      # http://ruby.railstutorial.org/chapters/updating-showing-and-deleting-users#sec-updating_users
-      if current_user_test
-        log_in @user
+    respond_to do |format|
+      if @user.update_attributes(params[:user])   
+        format.html do 
+          flash.now[:success] = "Profile updated" 
+          render 'edit'
+        end
+        format.json { respond_with_bip(@user) }
+        if current_user_test
+          log_in @user
+        end
+      else
+        format.html do 
+          flash.now[:failure] = "Profile not updated" 
+          render 'edit'
+        end
+        format.json { respond_with_bip(@user) }
       end
-      render 'edit'
-    else
-      flash.now[:failure] = "Profile not updated"
-      render 'edit'
     end
+
+    # if @user.update_attributes(params[:user])
+    #   flash.now[:success] = "Profile updated"
+    #   # Remember_token gets reset when the user is saved we have to relog
+    #   # in the the user updates his/her own account details.
+    #   # http://ruby.railstutorial.org/chapters/updating-showing-and-deleting-users#sec-updating_users
+    #   if current_user_test
+    #     log_in @user
+    #   end
+    #   render 'edit'
+    # else
+    #   flash.now[:failure] = "Profile not updated"
+    #   render 'edit'
+    # end
   end
 
   def gen_info

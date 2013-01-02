@@ -12,5 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.all
+//= require jquery.purr
 //= require bootstrap
+//= require best_in_place
 //= require_tree .
+
+$(function() {
+	$("#semester_start_date").datepicker();
+	$("#semester_end_date").datepicker();
+})
