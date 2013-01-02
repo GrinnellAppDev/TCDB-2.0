@@ -10,6 +10,7 @@ class StaticPagesController < ApplicationController
   end
 
   def directory
+    @users = User.all
   end
 
   def totalhrs

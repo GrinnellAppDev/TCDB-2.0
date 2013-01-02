@@ -1,3 +1,31 @@
 <% provide(:title, "Directory") %>
 
 <h1>Directory</h1>
+
+
+
+<table class="table">
+
+	<th>Name</th>
+	<th>Username</th>
+	<th>E-mail</th>
+	<th>Year</th>
+	<th>Rank</th>
+	<th>Certifications</th>
+
+
+
+	<% @users.each do |user| %>
+	<tr>
+		<td><%= user.name %></td>
+		<td><%= link_to user.username, user %></td>
+		<td><%= user.email %></td>
+		<td><%= user.year %></td>
+		<td><%= user.rank %></td>
+		<td>ErrOne has Helpesk, AVCenter certs. What? </td>
+	</tr>
+	<% end %>
+
+
+
+</table>
