@@ -17,6 +17,14 @@ FactoryGirl.define do
       rank "TC"
       username "kantersi"
     end
+
+    factory :user3 do
+      name "Maijid"
+      password "password"
+      password_confirmation "password"
+      rank "TC"
+      username "moujaled"
+    end
   end
 
   factory :shift do

@@ -29,16 +29,6 @@ describe "Authentication" do
 
       it { should have_link(user.name, href: "#") }
 
-      describe "followed by checking directory page" do
-        before { click_link "Directory" }
-        it { should have_selector('h1', text: 'Directory') }
-
-        it "should list each user" do
-          User.all.each do |user|
-            page.should have_selector('td', text: user.name)
-          end
-        end
-      end
 
       describe "followed by logout" do
         before { click_link "Log out" }
