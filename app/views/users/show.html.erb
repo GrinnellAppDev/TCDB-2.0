@@ -3,14 +3,9 @@
 
 <div class="span3">
 
-	<!-- We should probably just search for any file with @user.username instead of appending .jpg/.png to what we search for -->
-	<% if (Rails.application.assets.find_asset( @user.username + ".jpg") ) %>
-	<%= image_tag(@user.username + ".jpg", id:"profilepic", class:"pull-left") %>
-	<% elsif ! @user.photo_url.nil? %>
-	<%= image_tag(@user.photo_url, id:"profilepic", class:"pull-left") %>
-	<% else %>
-	<%= image_tag("default_profile_image.png", id:"profilepic", class:"pull-left") %>
-	<% end %>
+
+
+	<%= photo_for(@user) %>
 
 	<!-- Show edit button if you are the user. or an admin  -->
 	<% if @user == current_user || current_user.rank == "TCC" %>
@@ -19,6 +14,7 @@
 
 	<br>
 </div>
+
 
 <br>
 
