@@ -10,10 +10,11 @@ module UsersHelper
 	# We should probably just search for any file with @user.username instead of 
 	# appending .jpg/.png to what we search for 
 	def photo_for(user)
-		if (Rails.application.assets.find_asset( @user.username + ".jpg") )
-			image_tag(@user.username + ".jpg", id:"profilepic", class:"pull-left") 
+		if (Rails.application.assets.find_asset( "user_uploaded_photos/" + @user.username + ".jpg") )
+			image_tag("user_uploaded_photos/" + @user.username + ".jpg", id:"profilepic", class:"pull-left") 
 		elsif ! @user.photo_url.nil?
-			image_tag(@user.photo_url, id:"profilepic", class:"pull-left")
+			image_tag(@user.photo_url, id:"profilepic",
+			 class:"pull-left", size: '430')
 		else
 			image_tag("default_profile_image.png", id:"profilepic", class:"pull-left")
 		end
