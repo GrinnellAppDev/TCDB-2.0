@@ -65,7 +65,7 @@ p {
   color: #fff;
   text-transform: uppercase;
   letter-spacing: -1px;
-  padding-top: 9px;
+  padding-top: 11px;
   font-weight: bold;
   line-height: 1;
   &:hover {
@@ -151,14 +151,17 @@ input, textarea, select, .uneditable-input {
 
 }
 
+#sidenav {
+  position: fixed;
+}
+
 //Overwrite original bootstrap to change navbar color.
 .navbar-inner {
   background-color: #00B2EE; 
   background-image: none;
   background-repeat: no-repeat;
   filter: none;
-
-
+  height: 45px;
 }
 
 .navbar .nav > li > a {
@@ -175,6 +178,8 @@ input, textarea, select, .uneditable-input {
 }
 
 
+
+
 .sort_table th .current {
   padding-right: 12px;
   background-repeat: no-repeat;
@@ -188,6 +193,8 @@ input, textarea, select, .uneditable-input {
 .sort_table th .desc {
   background-image: url(/assets/down_arrow.gif);
 }
+
+
 
 
 // .navbar .nav  li a

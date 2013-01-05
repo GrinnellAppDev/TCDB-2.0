@@ -1,11 +1,14 @@
 <% provide(:title, @user.name) %>
+
+
+
 <h2> <%= @user.name %></h2>
 
 <div class="span3">
 
 
 
-	<%= photo_for(@user) %>
+	<%= image_tag @user.photo.url(:medium) %>
 
 	<!-- Show edit button if you are the user. or an admin  -->
 	<% if @user == current_user || current_user.rank == "TCC" %>

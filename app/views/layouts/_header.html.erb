@@ -7,7 +7,7 @@
         <% if logged_in? %>
               <li id="fat-menu" class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <%= current_user.name %>
+                    <%= image_tag(current_user.photo.url(:thumb)) %>   <%=  current_user.name  %>
  <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">

@@ -5,6 +5,7 @@
 
 <table class="table sort_table">
 	<tr>
+		<th></th>
 		<th><%= sortable "name" %></th>
 		<th><%= sortable "username" %></th>
 		<th><%= sortable "email" %></th>
@@ -15,12 +16,14 @@
 
 	<% @users.each do |user| %>
 	<tr>
-		<td><%= user.name %></td>
-		<td><%= link_to user.username, user %></td>
-		<td><%= user.email %></td>
-		<td><%= user.year %></td>
-		<td><%= user.rank %></td>
-		<td>ErrOne has Helpesk, AVCenter certs. What? </td>
+		<!-- I don't know why adding this style to the css wasn't working. I was probably doing something wrong. Could someone check this?  -->
+		<td style="vertical-align:middle"><%= image_tag user.photo.url(:thumb) %> </td>
+		<td style="vertical-align:middle" ><%= user.name %></td>
+		<td style="vertical-align:middle" ><%= link_to user.username, user %></td>
+		<td style="vertical-align:middle" ><%= user.email %></td>
+		<td style="vertical-align:middle" ><%= user.year %></td>
+		<td style="vertical-align:middle" ><%= user.rank %></td>
+		<td style="vertical-align:middle" >ErrOne has Helpesk, AVCenter certs. What? </td>
 	</tr>
 
 	<% end %>

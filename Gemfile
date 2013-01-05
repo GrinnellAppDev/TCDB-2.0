@@ -10,6 +10,8 @@ gem 'jquery-ui-rails'
 gem 'bootstrap-sass', '2.0.4'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'best_in_place'
+gem "paperclip", "~> 3.0"
+
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'

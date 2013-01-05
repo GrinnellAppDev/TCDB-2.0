@@ -9,15 +9,21 @@
 #  updated_at :datetime         not null
 #
 
+require 'open-uri' # So we can download the users photo and have paperclip resize them. 
+
 class User < ActiveRecord::Base
   #Every shift can have a user associated with it. Users can have multiple shifts
   has_many :shifts
   has_many :time_workeds
 
-  attr_accessible :username, :email, :name, :phone, :boxNum, :pCard, :rank, :password, :password_confirmation, :year, :photo_url
+  attr_accessible :username, :email, :name, :phone, :boxNum, :pCard, :rank, :password, :password_confirmation, :year, :photo_url, :photo
   attr_accessor :updating_password
 
   has_secure_password
+
+  has_attached_file :photo , styles: { small: "150x150>" , thumb: "32x32>", medium: "290x290>" }
+
+  before_create :download_remote_image
 
   before_save { |user| user.username = username.downcase }
   before_save { |user| user.rank = rank.upcase }
@@ -72,6 +78,7 @@ class User < ActiveRecord::Base
     current_time_worked.endtime = Time.now
   end
 
+
   private
   def create_remember_token
     self.remember_token = SecureRandom.urlsafe_base64
@@ -84,5 +91,14 @@ class User < ActiveRecord::Base
   def should_validate_password?
     updating_password || new_record?
   end
+
+  def download_remote_image
+    io = open(URI.parse(photo_url))
+    # def io.original_filename; base_uri.path.split('/').last; end
+    self.photo = io
+    rescue # catch url errors with validations instead of exceptions (Errno::ENOENT, OpenURI::HTTPError, etc... 
+  end
+
+
 
 end

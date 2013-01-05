@@ -1,6 +1,6 @@
 
 <div class="span2">
-    <ul id="sidenav" class="nav nav-pills nav-stacked">
+    <ul id="sidenav" class="nav nav-pills nav-stacked nav-list">
 
       <li class="<%= 'active' if current_page?(root_path) %>"><%= link_to "Home", root_path %></li>
       <li class="<%= 'active' if current_page?(subrequest_path) %>"> <%= link_to "Sub Requests", subrequest_path %></li>
@@ -11,6 +11,7 @@
 
 	<br>
 		<% if current_user.rank == "TCC" %>
+      <li class="nav-header">Admin</li>
 			<li class="<%= 'active' if current_page?(makeuser_path) %>"><%= link_to "Create User", makeuser_path %></li>
       <li class="<%= 'active' if current_page?(prepsemester_path) %>"><%= link_to "Create All Shifts", prepsemester_path %></li>
       <li class="<%= 'active' if current_page?(labs_path) %>"><%= link_to "Edit All Labs", labs_path %></li>
